@@ -48,7 +48,7 @@
             <div id="followers-list" class="list-follower w-full h-full tbl:bg-[#181818] border-b border-gray-700 rounded-b-3xl">
                 <% if (followerUsers.length > 0) { %>
                     <% followerUsers.forEach(followUser=> { %>
-                        <%- include('profile/user_follow_module', { user: followUser, curUserId: curUserId }) %>
+                        <%- include('Profile/user_follow_module', { user: followUser, curUserId: curUserId }) %>
                     <% }) %>
                 <% } else { %>
                     <div class="p-4 text-center text-[#777777] ">
@@ -60,7 +60,7 @@
             <div id="following-list" class="list-follower w-full h-full tbl:bg-[#181818] border-b border-gray-700 rounded-b-3xl hidden">
                 <% if (followingUsers.length > 0) { %>
                     <% followingUsers.forEach(followingUser=> { %>
-                        <%- include('profile/user_follow_module', { user: followingUser, curUserId: curUserId }) %>
+                        <%- include('Profile/user_follow_module', { user: followingUser, curUserId: curUserId }) %>
                     <% }) %>
                 <% } else { %>
                     <div class="p-4 text-center text-[#777777] ">
