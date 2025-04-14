@@ -1,2 +1,3 @@
-# CSC13008-Mini-Threads
+# Mini-Threads
  
+🔗 Deploy: https://mini-threads.up.railway.app/
