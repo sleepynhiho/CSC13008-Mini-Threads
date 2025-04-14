@@ -1,0 +1,17 @@
+<div class="detail-post-wrapper w-full h-full relative">
+    <%- include('post-activity', { post, following }) %>
+
+    <%- include('main-post', {post}) %>
+    <% if (userid) { %>
+        <%- include('comment-form', { postId: post._id.toString(), avatarSrc }) %>
+    <% } %>
+    <div class="comment-wrapper">
+        <% if(comments.length> 0) { %>
+            <% comments.forEach(comment=> { %>
+                <%- include('reply-post', { comment }) %>
+            <% }) %>
+        <% } %>
+    </div>
+</div>
+
+<script src="/Js/detail-post.js"></script>

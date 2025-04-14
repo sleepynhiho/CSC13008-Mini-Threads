@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    @keyframes zoomIn {
+        0% {
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .animate-zoomIn {
+        animation: zoomIn 0.5s ease forwards;
+    }
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .animate-fadeOut {
+        animation: fadeOut 1s ease forwards;
+    }
+    @keyframes zoomOutFade {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+
+    .animate-zoomOutFade {
+        animation: zoomOutFade 1s ease forwards;
+    }
+    
+    @keyframes fadeInDrop {
+        0% {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .animate-fadeInDrop {
+        animation: fadeInDrop 0.8s ease forwards;
+    }
+}

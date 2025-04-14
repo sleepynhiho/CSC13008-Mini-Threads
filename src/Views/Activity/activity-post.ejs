@@ -1,0 +1,153 @@
+<% const typeMap = {
+    comment: {
+        bg: 'bg-[#24C3FF]',
+        path: 'M8.62523 12.5C8.5337 12.5 8.44836 12.4796 8.3692 12.4389C8.29004 12.4008 8.20594 12.3384 8.11688 12.2519L5.18924 9.4084C5.1175 9.33969 5.06803 9.26972 5.04082 9.19847C5.01361 9.12723 5 9.06107 5 9C5 8.93639 5.01361 8.86896 5.04082 8.79771C5.06803 8.72646 5.1175 8.65649 5.18924 8.58779L8.11688 5.77099C8.21583 5.6743 8.30117 5.6056 8.37291 5.56489C8.44465 5.52163 8.52628 5.5 8.61781 5.5C8.74892 5.5 8.85529 5.5458 8.93692 5.6374C9.01855 5.72901 9.05937 5.83842 9.05937 5.96565V7.4084H9.16698C9.83488 7.4084 10.41 7.51399 10.8924 7.72519C11.3772 7.93639 11.7743 8.24173 12.0835 8.64122C12.3952 9.04071 12.6252 9.5229 12.7737 10.0878C12.9246 10.6501 13 11.2837 13 11.9885C13 12.1539 12.9604 12.2799 12.8813 12.3664C12.8046 12.4555 12.7168 12.5 12.6178 12.5C12.5387 12.5 12.4583 12.4835 12.3766 12.4504C12.2975 12.4173 12.2257 12.3397 12.1614 12.2176C11.9462 11.8003 11.6976 11.4746 11.4156 11.2405C11.1336 11.0038 10.8083 10.8372 10.4397 10.7405C10.0711 10.6438 9.64688 10.5954 9.16698 10.5954H9.05937V12.0534C9.05937 12.1832 9.01855 12.2901 8.93692 12.374C8.85529 12.458 8.75139 12.5 8.62523 12.5Z',
+    },
+    follow: {
+        bg: 'bg-[#6E3DEF]',
+        path: 'M5.81283 13C5.55932 13 5.35968 12.9466 5.2139 12.8398C5.0713 12.736 5 12.5921 5 12.4082C5 12.1235 5.0919 11.8224 5.2757 11.505C5.4595 11.1876 5.72569 10.891 6.07427 10.6151C6.42286 10.3363 6.84274 10.1109 7.33393 9.93882C7.82828 9.76381 8.38285 9.67631 8.99762 9.67631C9.61557 9.67631 10.1701 9.76381 10.6613 9.93882C11.1557 10.1109 11.5756 10.3363 11.921 10.6151C12.2696 10.891 12.5357 11.1876 12.7195 11.505C12.9065 11.8224 13 12.1235 13 12.4082C13 12.5921 12.9271 12.736 12.7813 12.8398C12.6387 12.9466 12.4407 13 12.1872 13H5.81283ZM9.00238 8.87987C8.6633 8.87987 8.34957 8.79384 8.0612 8.6218C7.77283 8.44679 7.53991 8.21246 7.36245 7.9188C7.18816 7.62217 7.10101 7.28995 7.10101 6.92214C7.10101 6.56025 7.18816 6.23396 7.36245 5.94327C7.53991 5.65258 7.77283 5.42269 8.0612 5.25362C8.34957 5.08454 8.6633 5 9.00238 5C9.34145 5 9.65518 5.08306 9.94355 5.24917C10.2319 5.41528 10.4633 5.64368 10.6376 5.93437C10.815 6.2221 10.9037 6.54839 10.9037 6.91324C10.9037 7.28402 10.815 7.61772 10.6376 7.91435C10.4633 8.21098 10.2319 8.44679 9.94355 8.6218C9.65518 8.79384 9.34145 8.87987 9.00238 8.87987Z',
+    },
+    like: {
+        bg: 'bg-[#FF007A]',
+        path: 'M5 8.33956C5 6.84296 6.07645 5.75 7.48174 5.75C8.08884 5.75 8.61175 5.95938 9.00094 6.30299C9.3914 5.95863 9.91188 5.75 10.5183 5.75C11.9276 5.75 13 6.84345 13 8.33956C13 9.20812 12.6297 10.037 12.0266 10.7947C11.4237 11.5521 10.5712 12.2609 9.5565 12.9023L9.55379 12.904C9.48997 12.9437 9.41108 12.9882 9.32747 13.0242C9.25284 13.0563 9.1332 13.1001 9 13.1001C8.86687 13.1001 8.74693 13.0551 8.67518 13.0242C8.59318 12.9889 8.51482 12.9453 8.45151 12.9072L8.44748 12.9048L8.4435 12.9023C7.42882 12.2609 6.57626 11.5521 5.97338 10.7947C5.37032 10.037 5 9.20812 5 8.33956Z',
+    },    
+} %>
+<div
+    id="activity-post-<%= noti._id %>"
+    class="activity-post w-full flex mt-4px relative cursor-pointer <%= noti.is_read ? '' : 'bg-[#222222]' %> tbl:bg-transparent transition duration-300 ease-in-out"
+    onclick="handleMarkAsReadAndNavigate('<%= noti._id %>', '<% if (noti.type === 'follow') { %>/profile/<%= noti.action_user_id._id %><% } else { %>/post/<%= noti.post_id._id %><% if (noti.type === 'comment' || (noti.type === 'like' && (noti.comment_id?.comment_content || noti.comment_id?.comment_image))) { %>#comment-<%= noti.comment_id._id %><% } %><% } %>')">
+    <div class="activity-post__more-btn absolute w-4 h-4 top-0 right-0 box-content pt-3 pb-4 pr-3 pl-2 tbl:hidden">
+        <svg aria-label="More" role="img" viewBox="0 0 12 12">
+            <title>More</title>
+            <path clip-rule="evenodd"
+                d="M2 7.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm4 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm4 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z"
+                fill="white" fill-rule="evenodd"></path>
+        </svg>
+        <div
+            class="activity-post-more-list hidden select-none overflow-hidden fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] items-end text-primary-text text-[15px] font-semibold tbl:border-[1px] tbl:border-border-color tbl:rounded-t-2xl shadow-[0_10.5px_21px_rgba(0,_0,_0,_0.078)] tbl:absolute tbl:top-full tbl:z-[1] tbl:w-[224px] tbl:right-0 tbl:my-2 tbl:mr-[-19px] tbl:bg-content-bg tbl:left-auto tbl:bottom-auto tbl:rounded-b-2xl">
+            <div
+                class="w-screen box-border p-4 pt-0 bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726] border-b-0">
+                <div class="w-full py-3 flex justify-center">
+                    <div class="w-10 h-1 bg-secondary-text rounded-full"></div>
+                </div>
+                <% if (!noti.is_read) { %>
+                    <div class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4">
+                        <div activity-id="mark-as-read-<%= noti._id %>"
+                            class="mark-as-red min-h-[20px] box-content p-5 flex items-center justify-between cursor-pointer hover:bg-[#212121]"
+                            onclick="handleMarkAsRead('<%= noti._id %>')">
+                            <span>Mark as read</span>
+                            <svg aria-label="" role="img" viewBox="0 0 20 20" class="w-5 h-5">
+                                <title></title>
+                                <path d="M1.5 1.75L18.5 18.25" stroke="white" stroke-linecap="round" stroke-width="1.5">
+                                </path>
+                                <path
+                                    d="M3.47414 6.27892C3.20456 6.01727 2.78029 5.99602 2.50117 6.24747C1.41059 7.22999 0.587673 8.33683 0.139959 9.36712C-0.0338603 9.76712 -0.0300002 10.2108 0.129836 10.601C1.24049 13.3126 4.48326 16.75 10.0001 16.75C10.8741 16.75 11.68 16.6639 12.4235 16.5086C13.0002 16.3882 13.1633 15.6831 12.7405 15.2728V15.2728C12.5453 15.0833 12.2667 15.0101 11.9998 15.0626C11.3839 15.1836 10.7188 15.25 10.0001 15.25C5.18515 15.25 2.43521 12.272 1.51791 10.0325C1.50596 10.0033 1.50888 9.98059 1.51568 9.96494C1.85715 9.17913 2.51757 8.26748 3.43478 7.42578C3.76747 7.12048 3.79816 6.59341 3.47414 6.27892V6.27892ZM16.5428 13.7373C16.2272 13.431 16.2465 12.9204 16.5569 12.6088C17.3554 11.8075 17.9704 10.9194 18.4571 10.0897C18.4939 10.0269 18.489 9.95912 18.4597 9.91192C17.0155 7.58585 14.0306 4.75 10.0001 4.75C9.33037 4.75 8.67997 4.82776 8.05567 4.96835C7.78456 5.02941 7.49807 4.95861 7.29866 4.76506V4.76506C6.8837 4.36231 7.03604 3.66842 7.59858 3.53444C8.36334 3.35229 9.16684 3.25 10.0001 3.25C14.7628 3.25 18.1518 6.57225 19.734 9.12072C20.066 9.65543 20.0607 10.3204 19.7509 10.8485C19.206 11.7776 18.4889 12.8103 17.5356 13.7488C17.26 14.0201 16.8203 14.0067 16.5428 13.7373V13.7373Z"
+                                    fill="white"></path>
+                                <path
+                                    d="M6.36296 9.08288C6.28918 9.37637 6.25 9.68361 6.25 10C6.25 12.0711 7.92893 13.75 10 13.75C10.3555 13.75 10.6994 13.7005 11.0253 13.6081L6.36296 9.08288ZM13.637 10.9171C13.7108 10.6236 13.75 10.3164 13.75 10C13.75 7.92893 12.0711 6.25 10 6.25C9.6445 6.25 9.30056 6.29947 8.97468 6.39189L13.637 10.9171Z"
+                                    fill="white"></path>
+                            </svg>
+                        </div>
+                    </div>
+                <% } %>
+                <div
+                    class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4">
+                    <div
+                        activity-id="delete-noti-<%= noti._id %>"   
+                        class="delete-noti min-h-[20px] box-content p-5 flex items-center justify-between cursor-pointer hover:bg-[#212121] text-red-600">
+                        <span>Delete</span>
+                        <svg aria-label="" role="img" viewBox="0 0 20 20" class="w-5 h-5">
+                            <title></title>
+                            <path d="M6.75 3.5V2.5C6.75 1.67157 7.42157 1 8.25 1H11.75C12.5784 1 13.25 1.67157 13.25 2.5V3.5" fill="none"
+                                stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                            <path
+                                d="M3.75 4L4.54449 15.5202C4.61689 16.57 4.6531 17.0949 4.88062 17.4928C5.08095 17.8431 5.38256 18.1246 5.74584 18.3004C6.15846 18.5 6.68461 18.5 7.73691 18.5H12.2631C13.3154 18.5 13.8415 18.5 14.2542 18.3004C14.6174 18.1246 14.9191 17.8431 15.1194 17.4928C15.3469 17.0949 15.3831 16.57 15.4555 15.5202L16.25 4M3.75 4H16.25M3.75 4H1.75M16.25 4H18.25"
+                                fill="none" stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="activity__post-avatar py-3 pl-3 pr-0 tbl:pl-6 select-none">
+        <a href="/profile/<%= noti.action_user_id._id.toString() %>" class="block w-[41px] relative" onclick="event.stopPropagation()">
+            <div class="w-9 h-9 relative">
+                <img src="<%= noti.action_user_id.profile.avt %>"
+                    alt="User Avatar" class="w-9 h-9 rounded-full border-border-color border-[0.5px] object-cover" />
+                <div class="activity__avatar-action absolute top-5 right-[-4px]">
+                    <div class="<%= typeMap[noti.type].bg %> w-[18px] h-[18px] border-[1px] border-[#101010] rounded-full box-content">
+                        <svg aria-label="" role="img" viewBox="0 0 18 18" fill="white">
+                            <title></title>
+                            <path d="<%= typeMap[noti.type].path %>">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="activity__post-content-container-1 w-full border-b-[1px] border-border-color pr-6 tbl:relative">
+        <% if (!noti.is_read) { %>
+            <svg width="24" height="24" viewBox="0 0 24 24"
+                class="w-3 h-3 absolute top-1/2 right-1 transform -translate-x-1/2 -translate-y-1/2 hidden tbl:block"
+                style="fill: #5aa7ff">
+                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2z"></path>
+            </svg>
+        <% } %>
+        <div class="activity__post-content-container-2 py-3 pl-1">
+            <div class="flex justify-between items-center">
+                <div class="flex-grow">
+                    <a href="/profile/<%= noti.action_user_id._id %>"
+                        onclick="event.stopPropagation()"
+                        class="activity__post-username leading-[22.5px] max-w-[115px] tbl:max-w-[285px] pc:max-w-[370px] inline-block text-[15px] font-user-weight break-words hover:underline"><%= noti.action_user_id.profile.nick_name %></a>
+                    <p
+                        data-created-at="<%= noti.createdAt %>"
+                        class="post-time-stamp leading-[22.5px] overflow-hidden inline-block text-[15px] text-secondary-text">
+                    </p>
+                    <p class="activity__post-pickedtag text-[15px] font-normal text-secondary-text break-all">
+                        <% if (noti.type === 'follow') {%>
+                            Followed you
+                        <% } else if ((noti.type === 'comment' || noti.type === 'like') && noti.post_id.post_quote) {%>
+                            <%= noti.post_id.post_quote %>
+                        <% } else if (noti.type === 'like') {%>
+                            Liked your thread
+                        <% } else if (noti.type === 'comment') {%>
+                            Replied to your photo
+                        <% } %>
+                    </p>
+                    <% if ((noti.type === 'comment') || (noti.type === 'like' && (noti.comment_id?.comment_content || noti.comment_id?.comment_image))) {%>
+                        <p class="activity__post-content block text-[15px] font-normal text-primary-text break-all">
+                            <%= noti.comment_id.comment_content || 'Replied with a photo' %>
+                        </p>
+                    <% } %>
+                </div>
+                <% if (noti.type === 'follow') {%>
+                    <div
+                        follow-id="follow-<%= noti.action_user_id._id %>"
+                        class="activity__post-follow-btn min-w-[120px] h-[34px] border-[1px] border-border-color rounded-[10px] text-center leading-[34px] font-user-weight px-4 mr-5 select-none whitespace-nowrap <%= following.includes(noti.action_user_id._id) ? 'text-[#777777]' : 'text-[#f3f5f7]' %>">
+                        <% if (following.includes(noti.action_user_id._id)) { %>Following<% } else { %>Follow<% } %>
+                    </div>
+                <% } %>
+            </div>
+            <% if (noti.type==='comment' ) {%>
+                <div class="activity__post-action ml-[-12px] mt-[3px] select-none">
+                    <button
+                        id="like-comment-<%= noti.comment_id._id.toString() %>"
+                        class="like-comment h-9 inline-flex flex-nowrap items-center justify-center px-3 rounded-[20px] cursor-pointer tbl:hover:bg-[#222222]">
+                        <svg aria-label="Like" role="img" viewBox="0 0 18 18" class="w-[18px] h-[18px]">
+                            <title>Like</title>
+                            <path 
+                                <%= noti.comment_id.comment_likes.includes(userid) ? 'fill=red stroke=red' : 'fill=none stroke=currentColor' %>
+                                d="M1.34375 7.53125L1.34375 7.54043C1.34374 8.04211 1.34372 8.76295 1.6611 9.65585C1.9795 10.5516 2.60026 11.5779 3.77681 12.7544C5.59273 14.5704 7.58105 16.0215 8.33387 16.5497C8.73525 16.8313 9.26573 16.8313 9.66705 16.5496C10.4197 16.0213 12.4074 14.5703 14.2232 12.7544C15.3997 11.5779 16.0205 10.5516 16.3389 9.65585C16.6563 8.76296 16.6563 8.04211 16.6562 7.54043V7.53125C16.6562 5.23466 15.0849 3.25 12.6562 3.25C11.5214 3.25 10.6433 3.78244 9.99228 4.45476C9.59009 4.87012 9.26356 5.3491 9 5.81533C8.73645 5.3491 8.40991 4.87012 8.00772 4.45476C7.35672 3.78244 6.47861 3.25 5.34375 3.25C2.9151 3.25 1.34375 5.23466 1.34375 7.53125Z"
+                                stroke-width="1.25"></path>
+                        </svg>
+                        <span
+                            class="like-comment-num <%= noti.comment_id.comment_likes.includes(userid) ? 'text-[#ff0000]' : 'text-[#ccc]' %> text-[13px] font-normal pl-1 <%= noti.comment_id.comment_likes.length === 0 ? 'hidden' : '' %>">
+                            <%= noti.comment_id.comment_likes.length %>
+                        </span>
+                    </button>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

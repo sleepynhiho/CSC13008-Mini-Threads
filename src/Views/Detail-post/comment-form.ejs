@@ -1,0 +1,357 @@
+<div class="comment-box-wrapper p-3 border-t-[1px] border-border-color tbl:px-6">
+    <div class="replies-post-info flex flex-nowrap items-center relative">
+        <img src="<%= avatarSrc %>" alt=""
+            class="replies-user-img w-9 h-9 rounded-full border-border-color border-[0.5px] object-cover self-start select-none" />
+        <div class="flex flex-col pl-3 w-[calc(100%-36px)] ">
+            <form action="" class="w-full relative">
+                <textarea post-id="<%= postId %>" id="reply-input" rows="1"
+                    class="replies-post-input w-full h-[34px] bg-[#333334] border-[1px] border-border-color rounded-[20px] text-[15px] font-normal text-[#b0b3b8] py-1 pl-3 pr-10 resize-none overflow-hidden"
+                    placeholder="Write a reply..."></textarea>
+                <label for="upload-comment-img">
+                    <svg aria-label="Attach media" role="img" viewBox="0 0 24 24" class="w-5 h-5 absolute right-3 top-1/2 -translate-y-[53%]">
+                        <title>Attach media</title>
+                        <g>
+                            <path clip-rule="evenodd"
+                                d="M2.00207 9.4959C1.65132 7.00019 1.47595 5.75234 1.82768 4.73084C2.13707 3.83231 2.72297 3.05479 3.50142 2.50971C4.38639 1.89005 5.63425 1.71467 8.12996 1.36392L10.7047 1.00207C13.2004 0.651325 14.4482 0.47595 15.4697 0.827679C16.3682 1.13707 17.1458 1.72297 17.6908 2.50142C17.9171 2.82454 18.0841 3.19605 18.2221 3.65901C17.7476 3.64611 17.2197 3.64192 16.6269 3.64055C16.5775 3.5411 16.5231 3.44881 16.4621 3.36178C16.0987 2.84282 15.5804 2.45222 14.9814 2.24596C14.3004 2.01147 13.4685 2.12839 11.8047 2.36222L7.44748 2.97458C5.78367 3.20841 4.95177 3.32533 4.36178 3.73844C3.84282 4.10182 3.45222 4.62017 3.24596 5.21919C3.01147 5.90019 3.12839 6.73209 3.36222 8.3959L3.97458 12.7531C4.15588 14.0431 4.26689 14.833 4.50015 15.3978C4.50083 16.3151 4.50509 17.0849 4.53201 17.7448C4.13891 17.4561 3.79293 17.1036 3.50971 16.6991C2.89005 15.8142 2.71467 14.5663 2.36392 12.0706L2.00207 9.4959Z"
+                                stroke="none" fill="#777777" fill-rule="evenodd"></path>
+                            <g>
+                                <g clip-path="url(#:r1c:)">
+                                    <rect stroke="#777777" fill="none" height="15.5" rx="3.75" stroke-width="1.5" width="15.5" x="6.75"
+                                        y="5.8894"></rect>
+                                    <path
+                                        d="M6.6546 17.8894L8.59043 15.9536C9.1583 15.3857 10.0727 15.3658 10.6647 15.9085L12.5062 17.5966C12.9009 17.9584 13.5105 17.9451 13.8891 17.5665L17.8181 13.6376C18.4038 13.0518 19.3536 13.0518 19.9394 13.6375L22.0663 15.7644"
+                                        stroke="#777777" fill="none" stroke-linejoin="round" stroke-width="1.5">
+                                    </path>
+                                    <circle cx="10.75" cy="9.8894" fill="#777777" r="1.25"></circle>
+                                </g>
+                            </g>
+                        </g>
+                        <defs>
+                            <clipPath id=":r1c:">
+                                <rect fill="white" height="17" rx="4.5" width="17" x="6" y="5.1394"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </label>
+                <input id="upload-comment-img" type="file" accept="image/*" class="hidden" />
+            </form>
+            <picture class="comment-preview-container select-none hidden mt-3">
+               <div class="relative inline-block">
+                    <img id="comment-preview" src="" alt="Image preview"
+                        class="create-post__img h-[100%] min-h-52 w-auto object-cover rounded-[8px] outline-[#f3f5f726]" draggable="false">
+                    <button
+                        class="comment-delete-img top-[10px] right-[10px] absolute w-[26px] h-[26px] rounded-full cursor-pointer bg-[#0006] flex items-center justify-center">
+                        <svg aria-label="Delete" role="img" viewBox="0 0 24 24" class="h-[12px] w-[12px] stroke-[3] stroke-white"
+                            style="--fill: currentColor; --height: 12px; --width: 12px;">
+                            <title>Delete</title>
+                            <polyline points="20.643 3.357 12 12 3.353 20.647"></polyline>
+                            <line x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line>
+                        </svg>
+                    </button>
+               </div>
+            </picture>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tự động tăng chiều cao của textarea khi người dùng nhập nhiều dòng
+    document.getElementById('reply-input').addEventListener('input', function (event) {
+        const textarea = event.target;
+        textarea.style.height = 'auto'; // Reset height để tính toán lại
+        textarea.style.height = `${textarea.scrollHeight}px`; // Đặt chiều cao bằng với nội dung
+    });
+
+    // ảnh preview
+    const commentImg = document.getElementById('upload-comment-img');
+    const commentPreview = document.getElementById('comment-preview');
+    const deleteBtn = document.querySelector('.comment-delete-img');
+    const previewImg = document.querySelector('.comment-preview-container');
+
+    commentImg.addEventListener('change', function (event) {
+        const file = event.target.files[0]; // Lấy file đầu tiên được chọn
+
+        if (file && file.type.startsWith('image/')) { // Kiểm tra file có phải ảnh
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                commentPreview.src = e.target.result; // Gán URL ảnh
+                previewImg.classList.remove('hidden'); // Hiển thị ảnh container
+            };
+
+            reader.readAsDataURL(file); // Đọc file dưới dạng URL base64
+        } else {
+            alert('Vui lòng chọn một tệp ảnh hợp lệ!');
+        }
+    });
+
+
+    // Xử lý sự kiện khi người dùng nhấn nút xóa ảnh
+    deleteBtn.addEventListener('click', function () {
+        commentPreview.src = ''; // Xóa ảnh preview
+        previewImg.classList.add('hidden'); // Ẩn ảnh container
+        commentImg.value = ''; // Xóa giá trị file
+    });
+
+    let isPosting = false;
+
+    document.getElementById('reply-input').addEventListener('keydown', async function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();  // Prevents form submission or any default behavior when pressing Enter
+            if (isPosting) return;
+            isPosting = true;
+            let replyContent = event.target.value;  // Get the content of the input field
+            const postId = event.target.getAttribute('post-id');  // Get the post ID from the input field
+            const commentImg = document.getElementById('upload-comment-img');
+        
+            const loadingToast = document.querySelector('.loading-post-toast');
+            const toastContent = document.querySelector('.toast__loading-content');
+
+            // Make sure the input is not empty
+            if (replyContent.trim() === '' && !commentImg.files[0]) {
+                isPosting = false;
+                return;
+            }
+
+            replyContent = replyContent.replace(/<\/?script[^>]*>/gim, "");
+
+            loadingToast.classList.remove('hidden');
+            toastContent.textContent = 'Posting comment...';
+
+            const formData = new FormData();
+            formData.append('post_id', postId);
+            formData.append('comment_content', replyContent);
+            if (commentImg.files[0]) {
+                formData.append('post_image', commentImg.files[0]);
+            }
+
+            try {
+                const response = await fetch('/post/newcomment', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to create comment');
+                }
+                commentPreview.src = '';
+                previewImg.classList.add('hidden');
+                commentImg.value = '';
+                event.target.value = '';
+                event.target.style.height = 'auto';
+                toastContent.textContent = 'Comment posted!';
+                setTimeout(() => {
+                    loadingToast.classList.add('hidden');
+                }, 1000);
+                
+                const data = await response.json();
+                addCommentToUI(data.comment, data.user);
+            } catch (error) {
+                console.error('Error posting comment:', error);
+                alert('Something went wrong. Please try again.');
+            } finally {
+                isPosting = false;
+            }
+        }
+    });
+
+    function addCommentToUI(comment, user) {
+            const commentNum = document.querySelector('.comment-num');
+            commentNum.textContent = parseInt(commentNum.textContent) + 1;
+            if (commentNum.textContent === '1') {
+                commentNum.classList.remove('hidden');
+            } 
+
+            const repliesContainer = document.querySelector('.comment-wrapper'); // Container chứa các bình luận
+            if (!repliesContainer) return;
+
+            // Tạo HTML cho bình luận mới
+            const commentHTML = `
+                    <div class="replies-post p-3 border-t-[1px] border-border-color tbl:px-6" id="comment-${comment._id.toString()}">
+                        <div class="replies-post-info flex flex-nowrap items-center relative">
+                            <div class="replies-post-more-btn w-5 h-5 absolute top-0 right-0 cursor-pointer">
+                                <svg aria-label="More" role="img" viewBox="0 0 24 24" fill="#777">
+                                    <title>More</title>
+                                    <circle cx="12" cy="12" r="1.5"></circle>
+                                    <circle cx="6" cy="12" r="1.5"></circle>
+                                    <circle cx="18" cy="12" r="1.5"></circle>
+                                </svg>
+                                <div
+                                    class="replies-post-more-list hidden flex select-none overflow-hidden fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] items-end text-primary-text text-[15px] font-semibold border-[1px] border-border-color rounded-t-2xl shadow-[0_10.5px_21px_rgba(0,_0,_0,_0.078)] tbl:absolute tbl:top-full tbl:z-[1] tbl:w-[224px] tbl:right-0 tbl:my-2 tbl:mr-[-19px] tbl:bg-content-bg tbl:left-auto tbl:bottom-auto tbl:rounded-b-2xl">
+                                    <div
+                                        class="w-screen box-border p-4 pt-0 bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726] border-b-0 tbl:p-0 tbl:rounded-none tbl:border-0 tbl:w-full">
+                                        <div class="w-full py-3 flex justify-center tbl:hidden">
+                                            <div class="w-10 h-1 bg-secondary-text rounded-full"></div>
+                                        </div>
+                                        <div
+                                            class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent">
+                                            <div
+                                                comment-id="delete-comment-${comment._id.toString()}"
+                                                class="delete-comment min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] text-red-600 tbl:p-3">
+                                                <span>Delete</span>
+                                                <svg aria-label="" role="img" viewBox="0 0 20 20" class="w-5 h-5">
+                                                    <title></title>
+                                                    <path d="M6.75 3.5V2.5C6.75 1.67157 7.42157 1 8.25 1H11.75C12.5784 1 13.25 1.67157 13.25 2.5V3.5" fill="none"
+                                                        stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                                                    <path
+                                                        d="M3.75 4L4.54449 15.5202C4.61689 16.57 4.6531 17.0949 4.88062 17.4928C5.08095 17.8431 5.38256 18.1246 5.74584 18.3004C6.15846 18.5 6.68461 18.5 7.73691 18.5H12.2631C13.3154 18.5 13.8415 18.5 14.2542 18.3004C14.6174 18.1246 14.9191 17.8431 15.1194 17.4928C15.3469 17.0949 15.3831 16.57 15.4555 15.5202L16.25 4M3.75 4H16.25M3.75 4H1.75M16.25 4H18.25"
+                                                        fill="none" stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="${user.profile.avt}" alt=""
+                                class="replies-user-img w-9 h-9 rounded-full border-border-color border-[0.5px] object-cover self-start select-none" />
+                            <div class="flex flex-col pl-3 w-[calc(100%-36px)]">
+                                <div class="block">
+                                    <a href="#"
+                                        class="replies-post-username inline-block text-[15px] font-user-weight hover:underline">${user.profile.nick_name}</a>
+                                    <p class="post-time-stamp inline-block text-[15px] text-secondary-text"> Just now</p>
+                                </div>
+
+                                <span
+                                    class="replies-post-content block text-[15px] font-normal text-primary-text break-words whitespace-normal mt-[3px]">
+                                    ${comment.comment_content}
+                                </span>
+
+                                ${comment.comment_image ? `
+                                    <img src="${comment.comment_image}" alt="" class="reply-user-img rounded-lg max-w-full max-h-full object-cover outline-1 outline-[#f3f5f726] border-none select-none" />
+                                ` : ''}
+
+                                <div class="replies-post-action ml-[-12px] mt-[3px] select-none">
+                                    <button
+                                        id="like-comment-${comment._id.toString()}"
+                                        class="like-comment h-9 inline-flex flex-nowrap items-center justify-center px-3 rounded-[20px] cursor-pointer hover:bg-[#222222]">
+                                        <svg aria-label="Like" role="img" viewBox="0 0 18 18" class="w-[18px] h-[18px]">
+                                            <title>Like</title>
+                                            <path stroke="#ccc" fill="none"
+                                                d="M1.34375 7.53125L1.34375 7.54043C1.34374 8.04211 1.34372 8.76295 1.6611 9.65585C1.9795 10.5516 2.60026 11.5779 3.77681 12.7544C5.59273 14.5704 7.58105 16.0215 8.33387 16.5497C8.73525 16.8313 9.26573 16.8313 9.66705 16.5496C10.4197 16.0213 12.4074 14.5703 14.2232 12.7544C15.3997 11.5779 16.0205 10.5516 16.3389 9.65585C16.6563 8.76296 16.6563 8.04211 16.6562 7.54043V7.53125C16.6562 5.23466 15.0849 3.25 12.6562 3.25C11.5214 3.25 10.6433 3.78244 9.99228 4.45476C9.59009 4.87012 9.26356 5.3491 9 5.81533C8.73645 5.3491 8.40991 4.87012 8.00772 4.45476C7.35672 3.78244 6.47861 3.25 5.34375 3.25C2.9151 3.25 1.34375 5.23466 1.34375 7.53125Z"
+                                                stroke-width="1.25"></path>
+                                        </svg>
+                                        <span class="like-comment-num text-[#ccc] text-[13px] font-normal pl-1 hidden">0</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+        // Thêm bình luận mới vào container
+        repliesContainer.insertAdjacentHTML('afterbegin', commentHTML);
+
+         // Thêm sự kiện "Like" vào bình luận mới
+        const likeButton = document.querySelector(`#like-comment-${comment._id.toString()}`);
+        likeButton.addEventListener('click', async () => {
+            const svg = likeButton.querySelector('svg path');
+            const likeNum = likeButton.querySelector('.like-comment-num');
+            const currentLikes = parseInt(likeNum.textContent.trim(), 10) || 0;
+
+            if (svg.getAttribute('fill') === 'red') {
+                // Nếu đã like, thực hiện "unlike"
+                await fetch(`/post/like-comment/${comment._id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'unlike' })
+                }).then(() => {
+                    svg.setAttribute('fill', 'none');
+                    svg.setAttribute('stroke', 'currentColor');
+                    likeNum.textContent = currentLikes - 1;
+                    if (currentLikes - 1 === 0) likeNum.classList.add('hidden');
+                });
+            } else {
+                // Nếu chưa like, thực hiện "like"
+                await fetch(`/post/like-comment/${comment._id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'like' })
+                }).then(() => {
+                    svg.setAttribute('fill', 'red');
+                    svg.setAttribute('stroke', 'red');
+                    likeNum.textContent = currentLikes + 1;
+                    likeNum.classList.remove('hidden');
+                });
+            }
+        });
+
+        // Thêm sự kiện "More" vào bình luận mới
+        const moreButton = document.querySelector(`#comment-${comment._id.toString()} .replies-post-more-btn`);
+        const moreList = document.querySelector(`#comment-${comment._id.toString()} .replies-post-more-list`);
+        moreButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            moreList.classList.toggle('hidden');
+        });
+
+        // Đóng menu khi nhấn ra ngoài
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest(`#comment-${comment._id.toString()}`)) {
+                moreList.classList.add('hidden');
+            }
+        });
+
+        // Thêm sự kiện "Delete" vào bình luận mới
+        const deleteButton = document.querySelector(`#comment-${comment._id.toString()} .delete-comment`);
+        deleteButton.addEventListener('click', (e) => {
+            // Lấy các phần tử liên quan đến confirm delete và overlay
+            const confirmDeleteBox = document.querySelector('.confirm-delete');
+            const overlay = document.querySelector('.overlay');
+            const confirmTitle = document.querySelector('.delete-title');
+            confirmTitle.textContent = 'Delete comment';
+            const confirmContent = document.querySelector('.delete-content');
+            confirmContent.textContent = 'If you delete this comment, you won\'t be able to restore it.';
+            const confirmCancelBtn = document.querySelector('.confirm-cancel-btn');
+            const confirmDeleteBtn = document.querySelector('.confirm-delete-btn');
+            const loadingToast = document.querySelector('.loading-post-toast');
+            const toastContent = document.querySelector('.toast__loading-content');
+
+            // Hiển thị hộp xác nhận
+            confirmDeleteBox.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+
+            const commentId = comment._id.toString();
+
+            // Sự kiện hủy bỏ
+            confirmCancelBtn.addEventListener('click', () => {
+                confirmDeleteBox.classList.add('hidden');
+                overlay.classList.add('hidden');
+            });
+
+            // Thêm sự kiện chỉ một lần cho button delete
+            const handleDelete = async () => {
+                loadingToast.classList.remove('hidden');
+                toastContent.textContent = 'Deleting comment...';
+
+                try {
+                    // Gửi yêu cầu DELETE đến server
+                    await fetch(`/post/delete-comment/${commentId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }).then(() => {
+                        loadingToast.classList.add('hidden');
+                        const commentContainer = document.querySelector(`#comment-${commentId}`);
+                        if (commentContainer) {
+                            commentContainer.remove();
+                        }
+                        confirmDeleteBox.classList.add('hidden');
+                        overlay.classList.add('hidden');
+                        commentNum.textContent = parseInt(commentNum.textContent) - 1;
+                    });
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred while deleting the comment.');
+                }
+            };
+
+            // Sự kiện xác nhận xoá chỉ được thực hiện một lần
+            confirmDeleteBtn.addEventListener('click', handleDelete, { once: true });
+        });
+    }
+</script>
+

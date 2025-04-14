@@ -1,0 +1,57 @@
+<div class="suggestion-text text-primary-text text-[15px] font-medium">Suggested for you</div>
+<div class="suggestion-row flex mt-4 gap-2 overflow-hidden overflow-x-auto relative">
+    <% users.forEach(user => { %>
+        <div class="suggestion-profile relative">
+            <div
+                class="profile-container p-3 flex flex-col justify-center items-center relative bg-[#1E1E1E] rounded-xl w-[156px] h-[204px] cursor-pointer overflow-visible"
+            >
+                <svg
+                    aria-label="Close"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    class="close-user absolute top-1 right-1 m-2 w-4 h-4 text-[#939393] "
+                    style="--fill: currentColor"
+                >
+                    <title>Đóng</title>
+                    <polyline
+                        points="20.643 3.357 12 12 3.353 20.647"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-width="1.25"
+                    ></polyline>
+                    <line
+                        x1="20.649"
+                        x2="3.354"
+                        y1="20.649"
+                        y2="3.354"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-width="1.25"
+                    ></line>
+                </svg>
+                <img
+                    src="<%= user.profile.avt %>"
+                    class="w-20 h-20 rounded-full object-cover select-none"
+                    onclick="window.location.href='/profile/<%= user._id %>'"
+                    alt=""
+                />
+                <a href="/profile/<%= user._id %>"
+                    class="post-user-info text-ellipsis whitespace-nowrap w-full text-center text-[15px] font-user-weight hover:underline">
+                    <%= user.profile.nick_name %>
+                </a>
+                <div
+                    class="second-title text-ellipsis overflow-hidden whitespace-nowrap w-full text-center text-secondary-text"
+                    onclick="window.location.href='/profile/<%= user._id %>'"
+                >
+                    <%= user.profile.display_name %>
+                </div>
+                <button
+                    follow-id="follow-<%= user._id %>"
+                    class="suggest-follow-btn px-8 py-1 border border-border-color bg-white text-black font-semibold rounded-md mt-2"
+                >
+                    Follow
+                </button>
+            </div>
+        </div>
+    <% }) %>
+</div>

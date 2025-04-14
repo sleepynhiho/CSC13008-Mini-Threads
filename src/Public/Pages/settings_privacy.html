@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Settings</title>
+        <link rel="icon" type="image/svg+xml" href="../Img/threads-app-icon.svg" />
+        <link href="../Css/output.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../Css/bundle.css" />
+        <link rel="stylesheet" href="../Css/settings.css" />
+    </head>
+
+    <body class="bg-main-bg">
+        <div class="app-container font-main-font">
+            <nav
+                class="top-nav fixed top-0 left-0 w-screen h-[60px] z-[1] bg-mobile-nav backdrop-blur-lg grid grid-cols-[1fr_50vw_1fr] grid-rows-1 tbl:hidden"
+            >
+                <div class="top-nav__left">
+                    <div onclick="window.history.back()" class="top-nav__left-back-btn flex h-full items-center justify-start">
+                        <svg aria-label="Back" role="img" viewBox="0 0 24 24" class="ml-7 w-6 h-6">
+                            <title>Back</title>
+                            <line x1="2.909" x2="22.001" y1="12.004" y2="12.004" stroke="white"></line>
+                            <polyline points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="white" fill="transparent"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <div class="top-nav__middle flex justify-center items-center">
+                    <a href="../../../index.html">
+                        <svg
+                            aria-label="Threads"
+                            fill="white"
+                            height="100%"
+                            role="img"
+                            viewBox="0 0 192 192"
+                            width="100%"
+                            class="w-8 h-8"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <title>Threads</title>
+                            <path
+                                d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"
+                            ></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="top-nav__right">
+                    <div class="top-nav__right-setting flex h-full items-center justify-end cursor-pointer">
+                        <svg aria-label="More" role="img" viewBox="0 0 24 24" class="mr-7 w-6 h-6 scale-x-[-1]">
+                            <title>More</title>
+                            <rect width="24" height="2.5" rx="1.25" x="3" y="7" fill="#4d4d4d"></rect>
+                            <rect width="14" height="2.5" rx="1.25" x="3" y="15" fill="#4d4d4d"></rect>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="top-nav__setting-more-menu hidden absolute left-0 top-0 w-fit">
+                    <div class="menu bg-[#181818]">
+                        <div class="menu__upper p-2 border-b border-[#333638]">
+                            <div
+                                class="menu__btn menu__btn--appearance flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] break-words relative"
+                                >
+                                    Appearance
+                                </span>
+                                <div class="menu__btn-icon flex items-center ml-2 rotate-180">
+                                    <svg
+                                        class="w-[16px] h-[16px] stroke-[2px] fill-none stroke-[#777]"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <title>Next</title>
+                                        <polyline points="16.502 3 7.498 12 16.502 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="menu__btn menu__btn--settings flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                                onclick="window.location.href='settings_privacy.html'"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] break-words relative"
+                                >
+                                    Settings
+                                </span>
+                            </div>
+                            <div
+                                class="menu__btn menu__btn--saved flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                                onclick="window.location.href='#'"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] break-words relative"
+                                >
+                                    Saved
+                                </span>
+                            </div>
+                            <div
+                                class="menu__btn menu__btn--liked flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                                onclick="window.location.href='#'"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] break-words relative"
+                                >
+                                    Liked
+                                </span>
+                            </div>
+                        </div>
+                        <div class="menu__lower p-2">
+                            <div
+                                class="menu__btn menu__btn--report flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] font-[system-ui] break-words relative"
+                                >
+                                    Report a problem
+                                </span>
+                            </div>
+                            <div
+                                class="menu__btn menu__btn--logout flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                            >
+                                <span
+                                    class="menu__btn-text menu__btn-text--logout max-w-full text-[#ff3040] text-[15px] font-semibold leading-[calc(1.4*1em)] font-[system-ui] break-words relative"
+                                >
+                                    Log out
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <nav
+                class="bottom-nav fixed bottom-0 left-0 w-screen h-[68px] z-[1] bg-mobile-nav backdrop-blur-lg flex items-center flex-col tbl:bg-nav tbl:bottom-auto tbl:h-screen tbl:top-0 tbl:w-[76px]"
+            >
+                <div
+                    class="navbar__app-icon w-[34px] h-[34px] py-[15px] overflow-x-hidden overflow-y-hidden hidden tbl:flex tbl:justify-center tbl:box-content"
+                >
+                    <a
+                        href="../../../index.html"
+                        class="w-[34px] h-[34px] transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
+                    >
+                        <svg
+                            aria-label="Threads"
+                            fill="white"
+                            height="100%"
+                            role="img"
+                            viewBox="0 0 192 192"
+                            width="100%"
+                            class="w-[34px] h-[34px]"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <title>Threads</title>
+                            <path
+                                d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"
+                            ></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="nav-utilities w-full h-full flex items-center justify-around flex-nowrap tbl:flex-col tbl:justify-center tbl:gap-y-1">
+                    <a
+                        href="../../../index.html"
+                        class="nav-utility-home w-1/5 h-full inline-flex justify-center items-center tbl:w-[24px] tbl:h-[24px] tbl:py-3 tbl:px-[18px] tbl:my-[6px] tbl:box-content tbl:rounded-xl hover:bg-[#171717]"
+                    >
+                        <svg aria-label="Home" role="img" viewBox="0 0 26 26" class="w-[26px] h-[26px] tbl:w-6 tbl:h-6">
+                            <title>Home</title>
+                            <path
+                                d="M2.25 12.8855V20.7497C2.25 21.8543 3.14543 22.7497 4.25 22.7497H9.25C9.52614 22.7497 9.75 22.5258 9.75 22.2497V17.6822V16.4997C9.75 14.7048 11.2051 13.2497 13 13.2497C14.7949 13.2497 16.25 14.7048 16.25 16.4997V17.6822V22.2497C16.25 22.5258 16.4739 22.7497 16.75 22.7497H21.75C22.8546 22.7497 23.75 21.8543 23.75 20.7497V12.8855C23.75 11.3765 23.0685 9.94814 21.8954 8.99882L16.1454 4.34539C14.3112 2.86094 11.6888 2.86094 9.85455 4.34539L4.10455 8.99882C2.93153 9.94814 2.25 11.3765 2.25 12.8855Z"
+                                fill="none"
+                                stroke="#4d4d4d"
+                                stroke-linecap="round"
+                                stroke-width="2.5"
+                            ></path>
+                        </svg>
+                    </a>
+                    <a
+                        href="./search.html"
+                        class="nav-utility-search w-1/5 h-full inline-flex justify-center items-center tbl:w-[24px] tbl:h-[24px] tbl:py-3 tbl:px-[18px] tbl:my-[6px] tbl:box-content tbl:rounded-xl hover:bg-[#171717]"
+                    >
+                        <svg aria-label="Search" role="img" viewBox="0 0 26 26" class="w-[26px] h-[26px] tbl:w-6 tbl:h-6">
+                            <title>Search</title>
+                            <path
+                                clip-rule="evenodd"
+                                d="M3.5 11.5C3.5 7.08172 7.08172 3.5 11.5 3.5C15.9183 3.5 19.5 7.08172 19.5 11.5C19.5 15.9183 15.9183 19.5 11.5 19.5C7.08172 19.5 3.5 15.9183 3.5 11.5ZM11.5 1C5.70101 1 1 5.70101 1 11.5C1 17.299 5.70101 22 11.5 22C13.949 22 16.2023 21.1615 17.9883 19.756L22.3661 24.1339C22.8543 24.622 23.6457 24.622 24.1339 24.1339C24.622 23.6457 24.622 22.8543 24.1339 22.3661L19.756 17.9883C21.1615 16.2023 22 13.949 22 11.5C22 5.70101 17.299 1 11.5 1Z"
+                                fill="#4d4d4d"
+                                fill-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </a>
+                    <label
+                        for="create-post__checkbox"
+                        class="nav-utility-create w-1/5 h-full inline-flex justify-center items-center tbl:w-[24px] tbl:h-[24px] tbl:py-3 tbl:px-[18px] tbl:my-[6px] tbl:box-content tbl:rounded-xl tbl:bg-[#171717] group"
+                    >
+                        <svg aria-label="Create" role="img" viewBox="0 0 26 26" class="w-[26px] h-[26px] tbl:hidden">
+                            <title>Create</title>
+                            <path
+                                d="M22.75 13L22.75 13.15C22.75 16.5103 22.75 18.1905 22.096 19.4739C21.5208 20.6029 20.6029 21.5208 19.4739 22.096C18.1905 22.75 16.5103 22.75 13.15 22.75L12.85 22.75C9.48969 22.75 7.80953 22.75 6.52606 22.096C5.39708 21.5208 4.4792 20.6029 3.90396 19.4739C3.25 18.1905 3.25 16.5103 3.25 13.15L3.25 12.85C3.25 9.48968 3.25 7.80953 3.90396 6.52606C4.4792 5.39708 5.39708 4.4792 6.52606 3.90396C7.80953 3.25 9.48968 3.25 12.85 3.25L13 3.25"
+                                stroke="#4d4d4d"
+                                stroke-linecap="round"
+                                stroke-width="2.5"
+                                fill="transparent"
+                            ></path>
+                            <path d="M21.75 4.25L13.75 12.25" stroke="#4d4d4d" stroke-linecap="round" stroke-width="2.5"></path>
+                        </svg>
+                        <svg aria-label="Create" role="img" viewBox="0 0 12 12" class="hidden tbl:inline-block tbl:w-6 tbl:h-6">
+                            <title>Create</title>
+                            <path d="M6 2v8m4-4H2" stroke="#4d4d4d" stroke-linecap="round" stroke-width="1.5" class="group-hover:stroke-white"></path>
+                        </svg>
+                    </label>
+                    <a
+                        href="./activity.html"
+                        class="nav-utility-noti w-1/5 h-full inline-flex justify-center items-center tbl:w-[24px] tbl:h-[24px] tbl:py-3 tbl:px-[18px] tbl:my-[6px] tbl:box-content tbl:rounded-xl hover:bg-[#171717]"
+                    >
+                        <svg
+                            aria-label="Notifications"
+                            role="img"
+                            viewBox="0 0 32 32"
+                            style="transform: scale(1.25)"
+                            class="w-[26px] h-[26px] tbl:w-6 tbl:h-6"
+                        >
+                            <title>Notifications</title>
+                            <path
+                                d="M5.5 12.8568C5.5 17.224 9.22178 21.5299 15.0332 25.2032C15.3554 25.397 15.7401 25.5909 16 25.5909C16.2703 25.5909 16.655 25.397 16.9668 25.2032C22.7782 21.5299 26.5 17.224 26.5 12.8568C26.5 9.11212 23.8698 6.5 20.4599 6.5C18.4847 6.5 16.9356 7.39792 16 8.74479C15.0851 7.40812 13.5257 6.5 11.5401 6.5C8.14059 6.5 5.5 9.11212 5.5 12.8568Z"
+                                stroke="#4d4d4d"
+                                fill="transparent"
+                                stroke-width="2.5"
+                            ></path>
+                        </svg>
+                    </a>
+                    <a
+                        href="./profile.html"
+                        class="nav-utility-profile w-1/5 h-full inline-flex justify-center items-center tbl:w-[24px] tbl:h-[24px] tbl:py-3 tbl:px-[18px] tbl:my-[6px] tbl:box-content tbl:rounded-xl hover:bg-[#171717]"
+                    >
+                        <svg aria-label="Profile" role="img" viewBox="0 0 26 26" class="w-[26px] h-[26px] tbl:w-6 tbl:h-6">
+                            <title>Profile</title>
+                            <circle cx="13" cy="7.25" r="4" stroke="#4d4d4d" stroke-width="2.5" fill="transparent"></circle>
+                            <path
+                                d="M6.26678 23.75H19.744C21.603 23.75 22.5 23.2186 22.5 22.0673C22.5 19.3712 18.8038 15.75 13 15.75C7.19625 15.75 3.5 19.3712 3.5 22.0673C3.5 23.2186 4.39704 23.75 6.26678 23.75Z"
+                                stroke="#4d4d4d"
+                                fill="transparent"
+                                stroke-width="2.5"
+                            ></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="navbar__setting mb-[22px] h-fit hidden tbl:block">
+                    <div
+                        class="navbar__setting-btn navbar__setting-btn--more w-[54px] h-[54px] flex items-center justify-center group cursor-pointer"
+                    >
+                        <svg aria-label="More" role="img" viewBox="0 0 24 24" class="w-6 h-6">
+                            <title>More</title>
+                            <rect width="24" height="2.5" rx="1.25" x="3" y="7" fill="#4d4d4d" class="group-hover:fill-white"></rect>
+                            <rect width="14" height="2.5" rx="1.25" x="3" y="15" fill="#4d4d4d" class="group-hover:fill-white"></rect>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="navbar__setting-more-menu hidden absolute left-0 top-0 w-fit">
+                    <div class="menu bg-[#181818]">
+                        <div class="menu__upper p-2 border-b border-[#333638]">
+                            <div
+                                class="menu__btn menu__btn--appearance flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] break-words relative"
+                                >
+                                    Appearance
+                                </span>
+                                <div class="menu__btn-icon flex items-center ml-2 rotate-180">
+                                    <svg
+                                        class="w-[16px] h-[16px] stroke-[2px] fill-none stroke-[#777]"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <title>Next</title>
+                                        <polyline points="16.502 3 7.498 12 16.502 21"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div
+                                class="menu__btn menu__btn--settings flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                                onclick="window.location.href='settings_privacy.html'"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] break-words relative"
+                                >
+                                    Settings
+                                </span>
+                            </div>
+                        </div>
+                        <div class="menu__lower p-2">
+                            <div
+                                class="menu__btn menu__btn--report flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                            >
+                                <span
+                                    class="menu__btn-text max-w-full text-[#f3f5f7] text-[15px] font-semibold leading-[calc(1.4*1em)] font-[system-ui] break-words relative"
+                                >
+                                    Report a problem
+                                </span>
+                            </div>
+                            <div
+                                class="menu__btn menu__btn--logout flex items-center justify-between px-3 py-3 h-[52px] bg-transparent cursor-pointer rounded-[12px] relative transition-transform duration-100 z-10 hover:bg-[rgba(255,_255,_255,_0.04)]"
+                            >
+                                <span
+                                    class="menu__btn-text menu__btn-text--logout max-w-full text-[#ff3040] text-[15px] font-semibold leading-[calc(1.4*1em)] font-[system-ui] break-words relative"
+                                >
+                                    Log out
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="login-btn fixed tbl:top-3 pc:top-6 right-7 z-[2] hidden select-none tbl:block">
+                <button
+                    type="button"
+                    class="login-btn__inner h-[34px] leading-[34px] w-[82px] bg-[#ffffff] rounded-[10px] font-medium text-[16px] p-0 border-none cursor-pointer"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    onclick="window.location.href='./login.html';"
+                >
+                    Log in
+                </button>
+            </div>
+
+            <div
+                class="create-btn fixed bottom-6 right-7 hidden tbl:flex justify-center items-center h-[68px] w-[82px] bg-content-bg border-[1px] border-[#353636] rounded-xl p-0 z-[2] cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105"
+            >
+                <svg aria-label="Create" role="img" viewBox="0 0 12 12" class="w-6 h-6">
+                    <title>Create</title>
+                    <path d="M6 2v8m4-4H2" stroke="#f3f5f7" stroke-linecap="round" stroke-width="1.5"></path>
+                </svg>
+            </div>
+
+            <div class="overlay fixed top-0 left-0 bottom-0 right-0 bg-black opacity-65 z-[3] hidden"></div>
+            <div
+                class="create-post-modal fixed top-0 left-0 w-screen min-h-screen bg-content-bg z-[4] text-primary-text hidden tbl:top-1/2 tbl:left-1/2 tbl:transform tbl:-translate-x-1/2 tbl:-translate-y-1/2 tbl:animate-zoomIn tbl:w-[620px] tbl:border-[0.5px] tbl:border-[#f3f5f726] tbl:rounded-2xl tbl:min-h-px"
+            >
+                <div
+                    class="create-post__header grid px-6 h-14 grid-cols-[64px_minmax(0,1fr)_64px] items-center tbl:border-b-[0.5px] tbl:border-[#f3f5f726]"
+                >
+                    <button class="create-post__header__cancel-btn text-primary-text font-normal text-[16px] p-2 tbl:overflow-hidden">Cancel</button>
+                    <div class="create-post__header__title text-[16px] font-bold text-center">New thread</div>
+                    <div class="create-post__header__balance"></div>
+                </div>
+                <div class="create-post__content px-6 pt-3 pb-[5px]">
+                    <div class="create-post__info w-full flex">
+                        <div class="create-post__info-avatar w-12">
+                            <img
+                                class="create-post__info-avatar__img1 w-9 h-9 border-2 border-border-color rounded-full"
+                                src="https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png"
+                                alt=""
+                            />
+                            <div class="create-post__info-avatar__straight-line w-[2px] h-12 bg-border-color mx-[16px] mt-[10px]"></div>
+                        </div>
+                        <div class="create-post__info-post flex-grow">
+                            <div class="create-post__info-post__username text-[15px] font-user-weight">cas.nothingtosay</div>
+                            <textarea
+                                rows="4"
+                                class="create-post__info-post__status w-full h-6 bg-transparent border-none outline-none text-secondary-text"
+                                placeholder="What's new?"
+                            ></textarea>
+                            <div class="create-post__utilities cursor-default select-none -ml-2">
+                                <div class="create-post__utilities-icon inline-flex items-center box-border w-9 h-9 px-2 cursor-pointer">
+                                    <svg aria-label="Attach media" role="img" viewBox="0 0 24 24" class="w-5 h-5">
+                                        <title>Attach media</title>
+                                        <g>
+                                            <path
+                                                clip-rule="evenodd"
+                                                d="M2.00207 9.4959C1.65132 7.00019 1.47595 5.75234 1.82768 4.73084C2.13707 3.83231 2.72297 3.05479 3.50142 2.50971C4.38639 1.89005 5.63425 1.71467 8.12996 1.36392L10.7047 1.00207C13.2004 0.651325 14.4482 0.47595 15.4697 0.827679C16.3682 1.13707 17.1458 1.72297 17.6908 2.50142C17.9171 2.82454 18.0841 3.19605 18.2221 3.65901C17.7476 3.64611 17.2197 3.64192 16.6269 3.64055C16.5775 3.5411 16.5231 3.44881 16.4621 3.36178C16.0987 2.84282 15.5804 2.45222 14.9814 2.24596C14.3004 2.01147 13.4685 2.12839 11.8047 2.36222L7.44748 2.97458C5.78367 3.20841 4.95177 3.32533 4.36178 3.73844C3.84282 4.10182 3.45222 4.62017 3.24596 5.21919C3.01147 5.90019 3.12839 6.73209 3.36222 8.3959L3.97458 12.7531C4.15588 14.0431 4.26689 14.833 4.50015 15.3978C4.50083 16.3151 4.50509 17.0849 4.53201 17.7448C4.13891 17.4561 3.79293 17.1036 3.50971 16.6991C2.89005 15.8142 2.71467 14.5663 2.36392 12.0706L2.00207 9.4959Z"
+                                                stroke="none"
+                                                fill="#777777"
+                                                fill-rule="evenodd"
+                                            ></path>
+                                            <g>
+                                                <g clip-path="url(#:r1c:)">
+                                                    <rect
+                                                        stroke="#777777"
+                                                        fill="none"
+                                                        height="15.5"
+                                                        rx="3.75"
+                                                        stroke-width="1.5"
+                                                        width="15.5"
+                                                        x="6.75"
+                                                        y="5.8894"
+                                                    ></rect>
+                                                    <path
+                                                        d="M6.6546 17.8894L8.59043 15.9536C9.1583 15.3857 10.0727 15.3658 10.6647 15.9085L12.5062 17.5966C12.9009 17.9584 13.5105 17.9451 13.8891 17.5665L17.8181 13.6376C18.4038 13.0518 19.3536 13.0518 19.9394 13.6375L22.0663 15.7644"
+                                                        stroke="#777777"
+                                                        fill="none"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="1.5"
+                                                    ></path>
+                                                    <circle cx="10.75" cy="9.8894" fill="#777777" r="1.25"></circle>
+                                                </g>
+                                            </g>
+                                        </g>
+                                        <defs>
+                                            <clipPath id=":r1c:">
+                                                <rect fill="white" height="17" rx="4.5" width="17" x="6" y="5.1394"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="create-post__utilities-icon inline-flex items-center box-border w-9 h-9 px-2 cursor-pointer">
+                                    <svg aria-label="Add a GIF" role="img" viewBox="0 0 24 24" class="w-5 h-5">
+                                        <title>Add a GIF</title>
+                                        <g clip-path="url(#clipPathID)">
+                                            <path
+                                                stroke="#777777"
+                                                fill="none"
+                                                d="M20.6472 13.7545L21.2766 14.1623L20.6472 13.7545C20.4715 14.0256 20.2404 14.2752 19.647 14.9058L15.4667 19.3473C14.7767 20.0804 14.5029 20.3659 14.1962 20.5791C13.785 20.8649 13.3208 21.0655 12.8308 21.169C12.4654 21.2462 12.0698 21.25 11.0631 21.25C9.62515 21.25 8.58506 21.2496 7.76313 21.1923C6.94813 21.1356 6.40373 21.0256 5.95094 20.8336C4.69662 20.3019 3.69812 19.3034 3.16638 18.0491C2.97444 17.5963 2.86444 17.0519 2.80767 16.2369C2.75042 15.4149 2.75 14.3748 2.75 12.9369V11.6C2.75 9.90747 2.75058 8.68317 2.82925 7.72029C2.90721 6.76615 3.05809 6.13493 3.32222 5.61655C3.82555 4.6287 4.6287 3.82555 5.61655 3.32222C6.13493 3.05809 6.76615 2.90721 7.72029 2.82925C8.68317 2.75058 9.90747 2.75 11.6 2.75H13.1363C14.48 2.75 15.4519 2.75037 16.2211 2.80049C16.984 2.8502 17.4953 2.94657 17.9222 3.11455C19.2784 3.64817 20.3518 4.72155 20.8855 6.07779C21.0534 6.50473 21.1498 7.01596 21.1995 7.77888C21.2496 8.54813 21.25 9.52002 21.25 10.8637C21.25 11.7295 21.2472 12.0697 21.1893 12.3875C21.1006 12.8745 20.9163 13.3391 20.6472 13.7545Z"
+                                            ></path>
+                                            <path
+                                                d="M13 21V19.3784C13 15.8557 15.8557 13.0001 19.3784 13.0002H21"
+                                                stroke="none"
+                                                fill="#777777"
+                                                stroke-linejoin="round"
+                                                stroke-width="1.5"
+                                            ></path>
+                                            <path
+                                                d="M8.33957 11.406C6.68121 11.406 5.69995 10.432 5.69995 8.69756C5.69995 6.98488 6.68121 6 8.2925 6C9.33894 6 10.1283 6.44899 10.4361 6.99936C10.5121 7.14058 10.5411 7.26369 10.5411 7.39404C10.5411 7.77785 10.2731 8.04218 9.88207 8.04218C9.58153 8.04218 9.35342 7.92631 9.16513 7.67647C8.91891 7.34697 8.66907 7.20937 8.29974 7.20937C7.64798 7.20937 7.26417 7.74526 7.26417 8.67583C7.26417 9.62812 7.7023 10.1966 8.37578 10.1966C8.87546 10.1966 9.23031 9.91779 9.27376 9.49777L9.281 9.42535H8.98047C8.63648 9.42535 8.41199 9.24431 8.41199 8.91481C8.41199 8.58531 8.63286 8.40426 8.98047 8.40426H9.99069C10.4795 8.40426 10.7583 8.69393 10.7583 9.2081C10.7583 10.4501 9.89655 11.406 8.33957 11.406Z"
+                                                stroke="none"
+                                                fill="#777777"
+                                            ></path>
+                                            <path
+                                                d="M12.5259 11.406C12.0371 11.406 11.7583 11.1163 11.7583 10.6021V6.80384C11.7583 6.28967 12.0371 6 12.5259 6C13.0147 6 13.2936 6.28967 13.2936 6.80384V10.6021C13.2936 11.1163 13.0147 11.406 12.5259 11.406Z"
+                                                stroke="none"
+                                                fill="#777777"
+                                            ></path>
+                                            <path
+                                                d="M15.3112 11.3606C14.8224 11.3606 14.5436 11.0709 14.5436 10.5568V6.849C14.5436 6.33484 14.8224 6.04517 15.3112 6.04517H17.6105C18.0232 6.04517 18.2876 6.26604 18.2876 6.65709C18.2876 7.04815 18.016 7.26902 17.6105 7.26902H16.0788V8.26839H17.4548C17.8386 8.26839 18.0848 8.4784 18.0848 8.84411C18.0848 9.20981 17.8458 9.41983 17.4548 9.41983H16.0788V10.5568C16.0788 11.0709 15.8 11.3606 15.3112 11.3606Z"
+                                                stroke="none"
+                                                fill="#777777"
+                                            ></path>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clipPathID">
+                                                <rect stroke="#777777" fill="none" height="20" transform="translate(2 2)" width="20"></rect>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="create-post__utilities-icon inline-flex items-center box-border w-9 h-9 px-2 cursor-pointer">
+                                    <svg
+                                        aria-label="Add a tag"
+                                        role="img"
+                                        viewBox="1 1 22 22"
+                                        class="w-5 h-5"
+                                        stroke="#777777"
+                                        fill="transparent"
+                                        stroke-width="1.5"
+                                    >
+                                        <title>Add a tag</title>
+                                        <path d="M5 8.50012H20"></path>
+                                        <path d="M4 15.0001H20"></path>
+                                        <path d="M7.59985 19.9399L10.3999 4.06036"></path>
+                                        <path d="M13.5999 19.9399L16.3999 4.06036"></path>
+                                    </svg>
+                                </div>
+                                <div class="create-post__utilities-icon inline-flex items-center box-border w-9 h-9 px-2 cursor-pointer">
+                                    <svg aria-label="Add a poll" role="img" viewBox="0 0 24 24" class="w-5 h-5">
+                                        <title>Add a poll</title>
+                                        <rect fill="#777777" height="1.5" rx="0.75" width="8" x="4" y="5.5"></rect>
+                                        <rect fill="#777777" height="1.5" rx="0.75" width="16" x="4" y="11.25"></rect>
+                                        <rect fill="#777777" height="1.5" rx="0.75" width="11" x="4" y="17"></rect>
+                                    </svg>
+                                </div>
+                                <div class="create-post__utilities-icon inline-flex items-center box-border w-9 h-9 px-2 cursor-pointer">
+                                    <svg aria-label="Add a location" role="img" viewBox="0 0 18 20" class="w-[18px] h-[18px]">
+                                        <title>Add a location</title>
+                                        <path
+                                            clip-rule="evenodd"
+                                            d="M9 0C4.30556 0 0.5 3.68841 0.5 8.18182C0.5 13.6821 6.49276 18.2668 8.41451 19.7965C8.58496 19.9321 8.79249 20 9 20C9.20751 20 9.41509 19.9321 9.58556 19.7965C11.5073 18.2668 17.5 13.6821 17.5 8.18182C17.5 3.68841 13.6945 0 9 0ZM9 18.5C6.83638 16.7645 2 12.3568 2 8.18182C2 4.67291 5.35463 1.5 9 1.5C12.6454 1.5 16 4.67291 16 8.18182C16 12.3568 11.1635 16.7645 9 18.5Z"
+                                            fill="#777777"
+                                            fill-rule="evenodd"
+                                        ></path>
+                                        <path
+                                            d="M10.7 8.33333C10.7 9.25381 9.93888 10 9 10C8.06112 10 7.3 9.25381 7.3 8.33333C7.3 7.41286 8.06112 6.66667 9 6.66667C9.93888 6.66667 10.7 7.41286 10.7 8.33333Z"
+                                            fill="#777777"
+                                        ></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="create-post__next-post flex w-full h-6 pt-[10px] box-content">
+                        <div class="create-post__next-post__avatar w-12 h-full items-end">
+                            <img
+                                class="create-post__next-post__avatar-img2 w-4 h-4 ml-2 rounded-full border-border-color border-[0.5px] object-cover opacity-50"
+                                src="https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png"
+                                alt=""
+                            />
+                        </div>
+                        <div class="create-post__next-post-info text-[16px] cursor-not-allowed leading-6 text-[#353535] mt-[-4px]">Add to thread</div>
+                    </div>
+                </div>
+                <div
+                    class="create-post__footer fixed right-0 left-0 bottom-0 z-[3] p-[14px] flex justify-between tbl:relative tbl:p-6 tbl:block tbl:right-auto tbl:left-auto tbl:bottom-auto tbl:z-auto"
+                >
+                    <button class="create-post__footer__privacy flex-grow cursor-pointer relative text-left">
+                        <span class="create-post__footer__privacy-title w-full text-[15px] text-secondary-text">Anyone can reply & quote</span>
+
+                        <div
+                            class="create-post__privacy-list hidden absolute overflow-hidden bottom-full ml-[-9px] w-[200px] text-[15px] font-semibold text-primary-text bg-[#1e1e1e] rounded-2xl border-[1px] border-[#2d2d2d] shadow-[0_10.5px_21px_#00000014] tbl:p-2 tbl:bottom-auto tbl:top-full tbl:mt-1"
+                        >
+                            <div
+                                class="create-post__privacy-list__item cursor-pointer hover:bg-[#212121] p-4 border-b-[1px] border-[#2d2d2d] tbl:rounded-xl tbl:p-3 tbl:border-b-0"
+                            >
+                                Anyone
+                            </div>
+                            <div class="create-post__privacy-list__item cursor-pointer hover:bg-[#212121] p-4 tbl:p-3 tbl:rounded-xl">
+                                Profiles you follow
+                            </div>
+                        </div>
+                    </button>
+                    <button
+                        class="create-post__footer__post-btn h-9 text-black font-semibold px-4 border-[1px] border-[#0006] rounded-[243px] bg-white tbl:absolute tbl:py-2 tbl:px-4 tbl:right-[26px] tbl:top-1/2 tbl:transform tbl:-translate-y-1/2 tbl:rounded-[10px] tbl:text-[14px] tbl:text-[#5a5b5b] tbl:bg-[#181818] tbl:cursor-not-all0.5wed tbl:border-[#f3f5f726] tbl:overflow-hidden"
+                    >
+                        Post
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="content-wrapper w-screen h-screen tbl:shadow-[0_0_10px_5px_rgba(10,10,10,0.7)] tbl:w-auto tbl:min-w-[546px] tbl:max-w-[640px] tbl:mx-[76px] tbl:h-[calc(100vh-60px)] pc:w-[640px] pc:ml-auto pc:mr-auto pc:mx-0"
+            >
+                <div
+                    class="content-border border-[1px] border-border-color rounded-t-3xl hidden tbl:block tbl:h-[calc(100vh-60px)] tbl:mt-[60px] tbl:top-0 tbl:fixed tbl:min-w-[546px] tbl:max-w-[640px] pc:w-[640px] pc:top-0 pc:left-1/2 pc:transform pc:-translate-x-1/2 pc:mx-0 shadow-[0_0_12px_0_rgba(0,0,0,0.04),_0_0_0_48px_rgb(10,10,10)]"
+                ></div>
+
+                <div
+                    class="heading__section hidden h-[60px] fixed z-[1] top-0 bg-main-bg box-border tbl:grid tbl:grid-cols-[1fr_50%_1fr] tbl:grid-rows-[1fr] tbl:min-w-[546px] tbl:max-w-[640px] pc:w-[640px]"
+                >
+                    <div class="heading__section__left flex items-center justify-start pl-4">
+                        <div
+                            class="back-btn inline-flex justify-center items-center w-6 h-6 border-[1px] border-[#363737] bg-[#181818] rounded-full cursor-pointer"
+                        >
+                            <svg aria-label="Back" role="img" viewBox="0 0 12 12" class="w-3 h-3">
+                                <title>Back</title>
+                                <path
+                                    d="M1 6h10M1 6l4-4M1 6l4 4"
+                                    stroke="white"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                ></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="heading__section__middle flex justify-center items-center">
+                        <a href="#" class="refresh-btn inline-block p-4 font-semibold text-[15px] text-primary-text text-center select-none"
+                            >For you</a
+                        >
+                        <div
+                            class="refresh-option inline-flex justify-center items-center w-6 h-6 border-[1px] border-[#363737] bg-[#181818] rounded-full cursor-pointer"
+                        >
+                            <svg aria-label="All" role="img" viewBox="0 0 13 12" class="w-3 h-3">
+                                <title>All</title>
+                                <path
+                                    d="m2.5 4.2 4 4 4-4"
+                                    fill="none"
+                                    stroke="white"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                ></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="heading__section__right flex justify-end items-center pr-4"></div>
+                </div>
+
+                <div
+                    class="content-section w-full min-h-full pc:min-h-[calc(100vh-60px) overflow-y-auto custom-scrollbar text-primary-text mt-[60px] tbl:pt-6 tbl:bg-content-bg"
+                >
+                    <div class="settings">
+                        <div class="settings__header">
+                            <div class="settings__tab settings__tab--privacy" role="tab" aria-selected="true">
+                                <a href="#" class="settings__link settings__link--privacy chosen">Privacy</a>
+                                <div class="settings__underline"></div>
+                            </div>
+                            <div class="settings__tab settings__tab--account" role="tab" aria-selected="false">
+                                <a href="settings_account.html" class="settings__link settings__link--account">Account</a>
+                            </div>
+                            <div class="settings__tab settings__tab--help" role="tab" aria-selected="false">
+                                <a href="settings_help.html" class="settings__link settings__link--help">Help</a>
+                            </div>
+                        </div>
+                        <div class="settings__option settings__option--visibility">
+                            <div class="settings__option-icon">
+                                <svg aria-label="Lock" role="img" viewBox="0 0 14 21" style="--fill: currentColor; --height: 100%; --width: 100%">
+                                    <title>Lock</title>
+                                    <path
+                                        d="M2.43 20.432c-.743 0-1.306-.202-1.69-.606-.384-.397-.576-.996-.576-1.797v-6.924c0-.794.192-1.39.576-1.787.384-.397.948-.595 1.69-.595h9.14c.742 0 1.306.198 1.69.595.384.397.576.993.576 1.787v6.924c0 .801-.192 1.4-.576 1.797-.384.404-.947.606-1.69.606H2.43Zm.273-1.758h8.594c.202 0 .358-.062.469-.186.11-.117.166-.293.166-.527v-6.777c0-.235-.056-.41-.166-.528-.111-.117-.267-.176-.47-.176H2.704a.634.634 0 0 0-.469.176c-.11.117-.166.293-.166.528v6.777c0 .234.056.41.166.527a.615.615 0 0 0 .47.186Zm-.752-9.131V6.438c0-1.205.235-2.21.703-3.018.476-.814 1.097-1.426 1.866-1.836A5.187 5.187 0 0 1 7 .969c.885 0 1.712.205 2.48.615.769.41 1.387 1.022 1.856 1.836.475.807.713 1.813.713 3.018v3.105h-1.826V6.262c0-.762-.15-1.403-.45-1.924a3.019 3.019 0 0 0-1.171-1.201A3.223 3.223 0 0 0 7 2.727c-.58 0-1.113.136-1.602.41a3.019 3.019 0 0 0-1.171 1.2c-.293.522-.44 1.163-.44 1.925v3.281H1.951Z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="settings__option-text">Private profile</div>
+                            <div class="settings__option-toggle">
+                                <input type="checkbox" class="settings__option-toggle-input" aria-checked="true" role="switch" tabindex="0" checked />
+                                <div class="settings__option-toggle-track"></div>
+                                <div class="settings__option-toggle-switch"></div>
+                            </div>
+                        </div>
+                        <div class="settings__option settings__option--mentions">
+                            <div class="settings__option-icon">
+                                <svg
+                                    aria-label="Mentions"
+                                    role="img"
+                                    viewBox="0 0 192 192"
+                                    style="--fill: currentColor; --height: 24px; --width: 24px"
+                                >
+                                    <title>Mentions</title>
+                                    <path
+                                        d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="settings__option-text">Mentions</div>
+                            <div class="settings__option-status">
+                                <span class="settings__option-current-status">Everyone</span>
+                                <span class="settings__option-arrow">
+                                    <svg aria-label="Next" role="img" viewBox="0 0 24 24" style="--fill: currentColor; --height: 16px; --width: 16px">
+                                        <title>Next</title>
+                                        <polyline points="16.502 3 7.498 12 16.502 21"></polyline>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="settings__option settings__option--online-status">
+                            <div class="settings__option-icon">
+                                <svg
+                                    aria-label="Online status"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    style="--fill: currentColor; --height: 24px; --width: 24px"
+                                >
+                                    <title>Online status</title>
+                                    <circle cx="12" cy="9" fill="none" r="4" stroke="currentColor" stroke-width="2"></circle>
+                                    <path
+                                        d="M14.3492 18C14.617 17.2565 15.0288 16.5783 15.5501 16H8.68373C6.7865 16 5.11364 16.9606 4.125 18.422C4.54015 18.986 5.01309 19.5048 5.53508 19.9698C6.10288 18.8036 7.29946 18 8.68373 18H14.3492Z"
+                                        fill="currentColor"
+                                    ></path>
+                                    <path
+                                        d="M20 24C17.8119 24 16 22.1958 16 20C16 17.8119 17.8119 16 20 16C22.1881 16 24 17.8119 24 20C24 22.1804 22.1727 24 20 24Z"
+                                        fill="currentColor"
+                                    ></path>
+                                    <path
+                                        d="M14.5505 22.4944C14.3607 22.0852 13.9218 21.8259 13.4756 21.8919C12.9941 21.9631 12.5013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 12.5019 21.963 12.9952 21.8916 13.4773C21.8256 13.9234 22.0841 14.3621 22.493 14.5521C23.0427 14.8076 23.7414 14.5629 23.8399 13.9648C23.9452 13.3255 24 12.6692 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C12.6683 24 13.3239 23.9454 13.9625 23.8403C14.5603 23.742 14.8053 23.044 14.5505 22.4944Z"
+                                        fill="currentColor"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="settings__option-text">Online status</div>
+                            <div class="settings__option-status">
+                                <span class="settings__option-current-status">Followers</span>
+                                <span class="settings__option-arrow">
+                                    <svg aria-label="Next" role="img" viewBox="0 0 24 24" style="--fill: currentColor; --height: 16px; --width: 16px">
+                                        <title>Next</title>
+                                        <polyline points="16.502 3 7.498 12 16.502 21"></polyline>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="settings__option settings__option--blocked-profiles">
+                            <div class="settings__option-icon settings__option-icon--blocked-profiles">
+                                <svg
+                                    aria-label="Blocked profiles"
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    style="--fill: currentColor; --height: 24px; --width: 24px"
+                                >
+                                    <title>Blocked profiles</title>
+                                    <circle cx="12.001" cy="12.005" r="10.5"></circle>
+                                    <line x1="16.001" x2="8.001" y1="8.005" y2="16.005"></line>
+                                    <line x1="8.001" x2="16.001" y1="8.005" y2="16.005"></line>
+                                </svg>
+                            </div>
+                            <div class="settings__option-text">Blocked profiles</div>
+                            <div class="settings__option-status">
+                                <span class="settings__option-arrow">
+                                    <svg aria-label="Next" role="img" viewBox="0 0 24 24" style="--fill: currentColor; --height: 16px; --width: 16px">
+                                        <title>Next</title>
+                                        <polyline points="16.502 3 7.498 12 16.502 21"></polyline>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-overlay settings-overlay--mentions">
+                        <div class="settings-overlay__popup">
+                            <div class="settings-overlay__header-tbl">
+                                <button class="settings-overlay__header-back">
+                                    <svg
+                                        aria-label="Back"
+                                        role="img"
+                                        viewBox="0 0 24 24"
+                                        class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1yxark7 xbh8q5q x73je2i x1owpc8m x1f6yumg xvlca1e"
+                                        style="--fill: currentColor; --height: 20px; --width: 20px"
+                                    >
+                                        <title>Back</title>
+                                        <line x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line>
+                                        <polyline points="9.276 4.726 2.001 12.004 9.276 19.274"></polyline>
+                                    </svg>
+                                </button>
+                                <a href="index.html" class="settings-overlay__header-icon">
+                                    <svg
+                                        aria-label="Threads"
+                                        fill="#f3f5f7"
+                                        height="100%"
+                                        role="img"
+                                        viewBox="0 0 192 192"
+                                        width="100%"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="settings-overlay__content">
+                                <div class="settings-overlay__header">Mentions</div>
+                                <div class="settings-overlay__description">
+                                    <span class="settings-overlay__text-main">Allow @mentions from</span>
+                                    <span class="settings-overlay__text-secondary"
+                                        >Choose who can @mention you to link your profile in their threads, replies or bio. When people try to
+                                        @mention you, they'll see that you don't allow @mentions.</span
+                                    >
+                                </div>
+                                <div class="settings-overlay__options">
+                                    <div class="settings-overlay__option settings-overlay__option--everyone" data-status="Everyone">
+                                        <input
+                                            type="radio"
+                                            name="mention-opt"
+                                            class="settings-overlay__radio-input"
+                                            aria-label="everyone"
+                                            value="everyone"
+                                            checked
+                                        />
+                                        <div class="settings-overlay__option-content">
+                                            <span class="settings-overlay__option-text">Everyone</span>
+                                            <div class="settings-overlay__option-radio">
+                                                <span class="settings-overlay__option-radio-inner"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="settings-overlay__option settings-overlay__option--people-you-follow"
+                                        data-status="Profiles that you follow"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="mention-opt"
+                                            class="settings-overlay__radio-input"
+                                            aria-label="people_you_follow"
+                                            value="people_you_follow"
+                                        />
+                                        <div class="settings-overlay__option-content">
+                                            <span class="settings-overlay__option-text">Profiles that you follow</span>
+                                            <div class="settings-overlay__option-radio">
+                                                <span class="settings-overlay__option-radio-inner"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="settings-overlay__option settings-overlay__option--noone" data-status="No one">
+                                        <input
+                                            type="radio"
+                                            name="mention-opt"
+                                            class="settings-overlay__radio-input"
+                                            aria-label="noone"
+                                            value="noone"
+                                        />
+                                        <div class="settings-overlay__option-content">
+                                            <span class="settings-overlay__option-text">No one</span>
+                                            <div class="settings-overlay__option-radio">
+                                                <span class="settings-overlay__option-radio-inner"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-overlay settings-overlay--online-status">
+                        <div class="settings-overlay__popup">
+                            <div class="settings-overlay__header-tbl">
+                                <button class="settings-overlay__header-back">
+                                    <svg
+                                        aria-label="Back"
+                                        role="img"
+                                        viewBox="0 0 24 24"
+                                        class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1yxark7 xbh8q5q x73je2i x1owpc8m x1f6yumg xvlca1e"
+                                        style="--fill: currentColor; --height: 20px; --width: 20px"
+                                    >
+                                        <title>Back</title>
+                                        <line x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line>
+                                        <polyline points="9.276 4.726 2.001 12.004 9.276 19.274"></polyline>
+                                    </svg>
+                                </button>
+                                <a href="index.html" class="settings-overlay__header-icon">
+                                    <svg
+                                        aria-label="Threads"
+                                        fill="#f3f5f7"
+                                        height="100%"
+                                        role="img"
+                                        viewBox="0 0 192 192"
+                                        width="100%"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="settings-overlay__content">
+                                <div class="settings-overlay__header">Online Status</div>
+                                <div class="settings-overlay__description">
+                                    <span class="settings-overlay__text-main">Who can see that you're online</span>
+                                    <span class="settings-overlay__text-secondary"
+                                        >When this is turned off, you won't be able to see the online status of others.</span
+                                    >
+                                </div>
+                                <div class="settings-overlay__options">
+                                    <div class="settings-overlay__option settings-overlay__option--followers" data-status="Followers">
+                                        <input
+                                            type="radio"
+                                            name="online-status-opt"
+                                            class="settings-overlay__radio-input"
+                                            aria-label="followers"
+                                            value="followers"
+                                            checked
+                                        />
+                                        <div class="settings-overlay__option-content">
+                                            <span class="settings-overlay__option-text">Followers</span>
+                                            <div class="settings-overlay__option-radio">
+                                                <span class="settings-overlay__option-radio-inner"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="settings-overlay__option settings-overlay__option--followers-you-follow"
+                                        data-status="Followers you follow"
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="online-status-opt"
+                                            class="settings-overlay__radio-input"
+                                            aria-label="followers_you_follow"
+                                            value="followers_you_follow"
+                                        />
+                                        <div class="settings-overlay__option-content">
+                                            <span class="settings-overlay__option-text">Followers you follow</span>
+                                            <div class="settings-overlay__option-radio">
+                                                <span class="settings-overlay__option-radio-inner"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="settings-overlay__option settings-overlay__option--noone" data-status="No one">
+                                        <input
+                                            type="radio"
+                                            name="online-status-opt"
+                                            class="settings-overlay__radio-input"
+                                            aria-label="noone"
+                                            value="noone"
+                                        />
+                                        <div class="settings-overlay__option-content">
+                                            <span class="settings-overlay__option-text">No one</span>
+                                            <div class="settings-overlay__option-radio">
+                                                <span class="settings-overlay__option-radio-inner"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-overlay settings-overlay--blocked-profiles">
+                        <div class="settings-overlay__popup">
+                            <div class="settings-overlay__header-tbl">
+                                <button class="settings-overlay__header-back">
+                                    <svg
+                                        aria-label="Back"
+                                        role="img"
+                                        viewBox="0 0 24 24"
+                                        class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1yxark7 xbh8q5q x73je2i x1owpc8m x1f6yumg xvlca1e"
+                                        style="--fill: currentColor; --height: 20px; --width: 20px"
+                                    >
+                                        <title>Back</title>
+                                        <line x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line>
+                                        <polyline points="9.276 4.726 2.001 12.004 9.276 19.274"></polyline>
+                                    </svg>
+                                </button>
+                                <a href="index.html" class="settings-overlay__header-icon">
+                                    <svg
+                                        aria-label="Threads"
+                                        fill="#f3f5f7"
+                                        height="100%"
+                                        role="img"
+                                        viewBox="0 0 192 192"
+                                        width="100%"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"
+                                        ></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="settings-overlay__content">
+                                <div class="settings-overlay__header">Blocked Profiles</div>
+                                <div class="settings-overlay__description">
+                                    <span class="settings-overlay__text-main">Here you can manage the profiles you have blocked.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../Js/layout.js"></script>
+        <script src="../Js/settings.js"></script>
+    </body>
+</html>

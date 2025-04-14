@@ -1,0 +1,43 @@
+<div class="user-profile flex w-full cursor-pointer pt-4 pl-6" onclick="window.location.href='/profile/<%= user._id %>'">
+    <div class="user-profile__avatar px-3 py-1">
+        <div class="user-profile__avatar-wrapper flex h-9 w-9 rounded-full user-select-none">
+            <img
+                class="user-profile__avatar-img rounded-full w-9 h-9 object-cover select-none"
+                src="<%= user.profile.avt %>"
+                alt="Profile picture"
+            />
+        </div>
+    </div>
+    <div class="user-profile__info flex flex-col flex-grow border-b-[0.5px] border-[#f3f5f726] pr-6">
+        <div class="user-profile__info-wrapper flex items-center justify-between flex-grow pb-2">
+            <div class="user-profile__details flex h-[42px] justify-center flex-col pr-2">
+                <div class="user-profile__username flex items-center">
+                    <a
+                        href="/profile/<%= user._id %>"
+                        class="user-profile__username-link text-[#f3f5f7] font-semibold text-[15px] leading-[1.4em] hover:underline"
+                    ><%= user.profile.nick_name %></a>
+                </div>
+                <div class="user-profile__name flex items-center">
+                    <span
+                        class="user-profile__name-text block max-w-full font-normal text-[15px] text-[#777777] leading-[1.4em]"
+                    ><%= user.profile.display_name %></span>
+                </div>
+            </div>
+            
+            <!-- Chuyển về tostring để so sánh vì khoogn thể so sánh trực tiếp từ object id -->
+            <% if (userid && curUserId.toString() !== user._id.toString()) { %>
+                <button
+                    type="button"
+                    class="user-profile__follow-btn inline-flex min-w-[104px] max-w-full h-[34px] border border-[#f3f5f726] justify-center bg-transparent user-select-none items-center flex-shrink-0 px-4 font-semibold rounded-[10px] cursor-pointer text-[15px] leading-[1.4em] <%= user.followers.some(follower => follower.equals(curUserId)) ? 'text-[#777777]' : 'text-[#f3f5f7]' %>"
+                    id="follow-<%= user._id %>"
+                ><% if (user.followers.some(follower => follower.equals(curUserId))) { %>Following<% } else { %>Follow<% } %></button>
+            <% } %>
+        </div>
+        <div class="user-profile__followers pb-3">
+            <div class="user-profile__followers-wrapper flex items-center">
+                <span class="user-profile__followers-count max-w-full text-[#f3f5f7] font-normal text-[15px] leading-[1.4em]"
+                ><%= user.followers.length %> followers</span>
+            </div>
+        </div>
+    </div>
+</div>

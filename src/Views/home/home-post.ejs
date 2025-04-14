@@ -1,0 +1,153 @@
+<div class="post-container flex px-6 py-4 border-b border-border-color cursor-pointer" post-id="post-id-<%= post._id.toString() %>"
+    onclick="window.location.href='/post/<%= post._id.toString() %>'"    
+>
+    <img src="<%= post.user_id.profile.avt %>" class="w-9 h-9 rounded-full mt-1 select-none object-cover" alt="" />
+    <div class="post-content flex flex-col ml-2 w-full">
+        <div class="post-top flex w-full justify-between">
+            <div class="post-user-info flex gap-2">
+                <%# include('../Partials/hover-user', {user: post.user}) %>
+                <a href="/profile/<%= post.user_id._id.toString() %>" class="hover:underline text-[15px] font-user-weight" onclick="event.stopPropagation()">
+                    <%= post.user_id.profile.nick_name %>
+                </a>
+                <div class="post-time-stamp text-[15px] text-secondary-text" data-created-at="<%= post.createdAt %>"></div>
+            </div>
+            <div class="main-post-more-btn p-1 tbl:hover:bg-[#222222] rounded-[20px] relative">
+                <svg
+                    aria-label="Xem thêm"
+                    role="img"
+                    viewBox="0 0 24 24"
+                    class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1gaogpn text-[#777777] h-5 w-5"
+                    style="--fill: currentColor; --height: 20px; --width: 20px"
+                >
+                    <title>Xem thêm</title>
+                    <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+                    <circle cx="6" cy="12" r="1.5" fill="currentColor"></circle>
+                    <circle cx="18" cy="12" r="1.5" fill="currentColor"></circle>
+                </svg>
+
+                <div
+                    class="main-post-more-list hidden select-none overflow-hidden fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] items-end text-primary-text text-[15px] font-semibold tbl:border-[1px] tbl:border-border-color tbl:rounded-t-2xl shadow-[0_10.5px_21px_rgba(0,_0,_0,_0.078)] tbl:absolute tbl:top-full tbl:z-[1] tbl:w-[224px] tbl:right-2 tbl:my-2 tbl:mr-[-19px] tbl:bg-content-bg tbl:left-auto tbl:bottom-auto tbl:rounded-b-2xl"
+                >
+                    <div
+                        class="w-screen box-border p-4 pt-0 bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726] border-b-0 tbl:p-0 tbl:rounded-none tbl:border-0 tbl:w-full"
+                    >
+                        <div class="w-full py-3 flex justify-center tbl:hidden">
+                            <div class="w-10 h-1 bg-secondary-text rounded-full"></div>
+                        </div>
+                        <% if (userid !== null && post.user_id._id.toString() === userid.toString()) { %>
+                            <div
+                                class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent"
+                            >
+                                <div
+                                    post-id="delete-post-<%= post._id.toString() %>"
+                                    class="delete-post min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] text-red-600 tbl:p-3"
+                                >
+                                    <span>Delete</span>
+                                    <svg aria-label="" role="img" viewBox="0 0 20 20" class="w-5 h-5">
+                                        <title></title>
+                                        <path d="M6.75 3.5V2.5C6.75 1.67157 7.42157 1 8.25 1H11.75C12.5784 1 13.25 1.67157 13.25 2.5V3.5" fill="none"
+                                            stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                                        <path
+                                            d="M3.75 4L4.54449 15.5202C4.61689 16.57 4.6531 17.0949 4.88062 17.4928C5.08095 17.8431 5.38256 18.1246 5.74584 18.3004C6.15846 18.5 6.68461 18.5 7.73691 18.5H12.2631C13.3154 18.5 13.8415 18.5 14.2542 18.3004C14.6174 18.1246 14.9191 17.8431 15.1194 17.4928C15.3469 17.0949 15.3831 16.57 15.4555 15.5202L16.25 4M3.75 4H16.25M3.75 4H1.75M16.25 4H18.25"
+                                            fill="none" stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        <% } %>
+                        <div
+                            onclick="copyLinkToClipboard('/post/<%= post._id %>')"
+                            class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent tbl:border-border-color <%= userid !== null && post.user_id._id.toString()===userid.toString() ? 'tbl:border-t-[1px]' : '' %>"
+                        >
+                            <div
+                                class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] tbl:p-3"
+                            >
+                                <span>Copy link</span>
+                                <svg aria-label="" role="img" viewBox="0 0 18 18" class="w-5 h-5">
+                                    <title></title>
+                                    <path
+                                        d="M8.39992 5.44993L9.50669 4.34316C11.2046 2.64524 13.9575 2.64524 15.6554 4.34316V4.34316V4.34316C17.3533 6.04108 17.3533 8.79396 15.6554 10.4919L14.5486 11.5987"
+                                        stroke="white"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-width="1.65"
+                                    ></path>
+                                    <path
+                                        d="M5.44773 8.40114L4.34096 9.50791C2.64304 11.2058 2.64304 13.9587 4.34096 15.6566V15.6566V15.6566C6.03889 17.3546 8.79176 17.3546 10.4897 15.6566L11.5965 14.5499"
+                                        stroke="white"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-width="1.65"
+                                    ></path>
+                                    <path
+                                        d="M12.7051 7.29565L7.2942 12.7065"
+                                        stroke="white"
+                                        fill="none"
+                                        stroke-linecap="round"
+                                        stroke-width="1.65"
+                                    ></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post-content-container flex flex-col">
+            <div class="post-text w-full"><%= post.post_quote%></div>
+            <div
+                class="replies-img max-w-full mt-2 overflow-x-auto custom-scrollbar object-cover "
+            >
+                <img
+                    src="<%= post.post_image %>"
+                    alt=""
+                    class="replies-user-img rounded-lg max-w-full max-h-full object-cover outline-1 outline-[#f3f5f726] border-none select-none"
+                />
+            </div>
+        </div>
+            <div class="post-actions flex gap-1 mt-2 ml-[-12px] select-none">
+                <div
+                    class="post-like flex gap-1 justify-center items-center cursor-pointer tbl:hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+                    id="like-button-<%= post._id.toString() %>"
+                >
+                    <svg
+                        aria-label="Thích"
+                        role="img"
+                        viewBox="0 0 18 18"
+                        class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 x73je2i xvlca1e h-5 w-5 text-[#CCCCCC]"
+                        style="--fill: transparent; --height: 19px; --width: 18.75px"
+                    >
+                        <title>Thích</title>
+                        <path
+                            d="M1.34375 7.53125L1.34375 7.54043C1.34374 8.04211 1.34372 8.76295 1.6611 9.65585C1.9795 10.5516 2.60026 11.5779 3.77681 12.7544C5.59273 14.5704 7.58105 16.0215 8.33387 16.5497C8.73525 16.8313 9.26573 16.8313 9.66705 16.5496C10.4197 16.0213 12.4074 14.5703 14.2232 12.7544C15.3997 11.5779 16.0205 10.5516 16.3389 9.65585C16.6563 8.76296 16.6563 8.04211 16.6562 7.54043V7.53125C16.6562 5.23466 15.0849 3.25 12.6562 3.25C11.5214 3.25 10.6433 3.78244 9.99228 4.45476C9.59009 4.87012 9.26356 5.3491 9 5.81533C8.73645 5.3491 8.40991 4.87012 8.00772 4.45476C7.35672 3.78244 6.47861 3.25 5.34375 3.25C2.9151 3.25 1.34375 5.23466 1.34375 7.53125Z"
+                             <%= post.post_likes.includes(userid) ? 'fill=red stroke=red' : 'fill=none stroke=currentColor' %>
+                            stroke-width="1.25"
+                        ></path>
+                    </svg>
+                    <div class="like-num text-[#<%= post.post_likes.includes(userid) ? 'ff0000' : 'ccc' %>] text-[13px] font-normal pl-1 <%= post.post_likes.length===0 ? 'hidden' : '' %>"><%= post.post_likes.length%></div>
+                </div>
+            <div
+                class="post-comment flex gap-1 justify-center items-center cursor-pointer tbl:hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+            >
+                <svg
+                    aria-label="Trả lời"
+                    role="img"
+                    viewBox="0 0 18 18"
+                    class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 xbh8q5q x73je2i x1f6yumg xvlca1e h-5 w-5 text-[#CCCCCC]"
+                    style="--fill: currentColor; --height: 18px; --width: 18px"
+                >
+                    <title>Trả lời</title>
+                    <path
+                        d="M15.376 13.2177L16.2861 16.7955L12.7106 15.8848C12.6781 15.8848 12.6131 15.8848 12.5806 15.8848C11.3779 16.5678 9.94767 16.8931 8.41995 16.7955C4.94194 16.5353 2.08152 13.7381 1.72397 10.2578C1.2689 5.63919 5.13697 1.76863 9.75264 2.22399C13.2307 2.58177 16.0261 5.41151 16.2861 8.92429C16.4161 10.453 16.0586 11.8841 15.376 13.0876C15.376 13.1526 15.376 13.1852 15.376 13.2177Z"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linejoin="round"
+                        stroke-width="1.25"
+                    ></path>
+                </svg>
+                <% if(post.post_comments.length > 0) { %>
+                    <div class="comment-num text-[#ccc] text-[13px] font-normal pl-1"><%= post.post_comments.length%></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>

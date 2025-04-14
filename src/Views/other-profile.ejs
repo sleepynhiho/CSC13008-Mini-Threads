@@ -1,0 +1,855 @@
+<div class="profile-wrapper w-full h-full relative">
+  <!-- profile -->
+  <div class="profile__info">
+    <div class="content__heading flex justify-between">
+      <div class="information flex flex-col ml-6 font-bold">
+        <div class="information__name text-2xl mb-1">
+          <%= user.profile.display_name%>
+        </div>
+        <div class="information__nickname text-sm font-normal mb-6">
+          <%= user.profile.nick_name%>
+        </div>
+        <div class="information__bio text-sm font-normal mb-4">
+          <%= user.profile.bio%>
+        </div>
+        <div
+          class="information__follower flex flex-row justify-around mb-8 text-gray-500"
+        >
+          <ul class="follower__img flex flex-row cursor-pointer">
+            <li
+              class="follower__img__item h-4 w-4 bg-cover mr-1 relative rounded-full"
+              style="
+                background-image: url(&quot;https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png&quot;);
+                left: 2px;
+              "
+            ></li>
+            <li
+              class="follower__img__item h-4 w-4 bg-cover mr-1 relative rounded-full"
+              style="
+                background-image: url(&quot;https://th.bing.com/th/id/R.b28868904888f28f32264a83f29d5b4a?rik=MeIviuEyQSaLbw&pid=ImgRaw&r=0&quot;);
+                left: -10px;
+              "
+            ></li>
+            <li
+              class="follower__img__item h-4 w-4 bg-cover relative rounded-full"
+              style="
+                background-image: url(&quot;https://dailytrust.com/wp-content/uploads/2022/12/Neymar.jpg&quot;);
+                left: -20px;
+              "
+            ></li>
+          </ul>
+          <div
+            class="follower__number text-sm font-normal mr-1 relative cursor-pointer"
+          >
+            <%= user.follower_count%>
+          </div>
+          <div
+            class="follower__text text-sm font-normal relative cursor-pointer"
+          >
+            followers
+          </div>
+        </div>
+      </div>
+      <div class="utility flex flex-col items-end h-48 mr-6">
+        <div
+          class="utility__avatar h-20 w-20 bg-cover mb-8 rounded-full cursor-pointer"
+          style="
+            background-image: url(&quot;https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png&quot;);
+          "
+        ></div>
+        <div class="utility__insta cursor-pointer mr-2">
+          <i class="fa-brands fa-instagram text-2xl cursor-pointer"></i>
+        </div>
+      </div>
+    </div>
+    <div
+      class="follow-btn1 block h-8 text-sm mb-6 ml-6 mr-6 text-center cursor-pointer border rounded-lg"
+      style="border: 2px solid rgba(147, 140, 140, 0.4)"
+    >
+      <p class="mt-1">Follow</p>
+    </div>
+    <ul
+      class="navigation flex flex-row justify-around font-medium text-[15px] mt-[30px] ;list-style: none"
+    >
+      <li
+        class="navigation__item w-[calc(100%_/_3)] flex items-center flex-col hover:cursor-pointer; navigation__news navigation__item--on text-[white]"
+      >
+        <div class="item__text">Threads</div>
+        <div
+          class="item__line w-full mt-3.5 border-b-[rgba(243,245,247,0.15)] border-b border-solid border-b-[white]"
+        ></div>
+      </li>
+      <li
+        class="navigation__item w-[calc(100%_/_3)] flex items-center flex-col hover:cursor-pointer; navigation__replies navigation__item--off text-[rgb(153,153,153)]"
+      >
+        <div class="item__text">Replies</div>
+        <div
+          class="item__line w-full mt-3.5 border-b-[rgba(243,245,247,0.15)] border-b border-solid"
+        ></div>
+      </li>
+      <li
+        class="navigation__item w-[calc(100%_/_3)] flex items-center flex-col hover:cursor-pointer; navigation__reposts navigation__item--off text-[rgb(153,153,153)]"
+      >
+        <div class="item__text">Reposts</div>
+        <div
+          class="item__line w-full mt-3.5 border-b-[rgba(243,245,247,0.15)] border-b border-solid"
+        ></div>
+      </li>
+    </ul>
+    <div
+      class="post-container flex px-6 py-4 border-t border-border-color cursor-pointer"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png"
+        class="w-9 h-9 rounded-full mt-1 select-none"
+        alt=""
+      />
+      <div class="post-content flex flex-col gap-1 ml-2 w-full">
+        <div class="post-top flex w-full justify-between">
+          <div class="post-user-info flex gap-2">
+            <div class="post-username relative group">
+              <span class="hover:underline text-[15px] font-user-weight"
+                >justinbieber</span
+              >
+              <div
+                class="user-card absolute left-0 top-full mt-2 w-80 h-[200px] p-4 bg-[#181818] border border-border-color rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 hidden"
+              >
+                <div class="hover-top flex items-center justify-between mt-4">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png"
+                    class="w-16 h-16 rounded-full ml-3"
+                    alt="User Icon"
+                  />
+                </div>
+                <div class="hover-bottom mt-1">
+                  <div class="hover-followers text-[#777777]">
+                    700 followers
+                  </div>
+                  <div
+                    class="follow-btn mt-4 px-[120px] py-1 bg-white text-black font-semibold rounded-md"
+                  >
+                    Follow
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-time-stamp text-[15px] text-secondary-text">
+              50m
+            </div>
+          </div>
+          <div
+            class="main-post-more-btn p-1 hover:bg-[#222222] rounded-[20px] relative"
+          >
+            <svg
+              aria-label="Xem thêm"
+              role="img"
+              viewBox="0 0 24 24"
+              class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1gaogpn text-[#777777] h-5 w-5"
+              style="--fill: currentColor; --height: 20px; --width: 20px"
+            >
+              <title>Xem thêm</title>
+              <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+              <circle cx="6" cy="12" r="1.5" fill="currentColor"></circle>
+              <circle cx="18" cy="12" r="1.5" fill="currentColor"></circle>
+            </svg>
+
+            <div
+              class="main-post-more-list hidden select-none overflow-hidden fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] items-end text-primary-text text-[15px] font-semibold border-[1px] border-border-color rounded-t-2xl shadow-[0_10.5px_21px_rgba(0,_0,_0,_0.078)] tbl:absolute tbl:top-full tbl:z-[1] tbl:w-[224px] tbl:right-2 tbl:my-2 tbl:mr-[-19px] tbl:bg-content-bg tbl:left-auto tbl:bottom-auto tbl:rounded-b-2xl"
+            >
+              <div
+                class="w-screen box-border p-4 pt-0 bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726] border-b-0 tbl:p-0 tbl:rounded-none tbl:border-0 tbl:w-full"
+              >
+                <div class="w-full py-3 flex justify-center tbl:hidden">
+                  <div class="w-10 h-1 bg-secondary-text rounded-full"></div>
+                </div>
+                <div
+                  class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent"
+                >
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer border-b-[1px] border-[#f3f5f726] hover:bg-[#212121] tbl:p-3 tbl:border-b-0"
+                  >
+                    <span>Save</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="w-5 h-5"
+                    >
+                      <title></title>
+                      <path
+                        stroke="white"
+                        fill="none"
+                        d="M3.40039 17.7891V3.94995C3.40039 2.43117 4.6316 1.19995 6.15039 1.19995H13.8448C15.3636 1.19995 16.5948 2.43117 16.5948 3.94995V17.6516C16.5948 18.592 15.4579 19.063 14.7929 18.398L10.6201 14.2252C10.4198 14.0249 10.097 14.0184 9.88889 14.2106L5.17191 18.5647C4.49575 19.1888 3.40039 18.7093 3.40039 17.7891Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] tbl:p-3"
+                  >
+                    <span>Not interested</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1yxark7 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <path
+                        d="M1.5 1.75L18.5 18.25"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-width="1.5"
+                      ></path>
+                      <path
+                        d="M3.47414 6.27892C3.20456 6.01727 2.78029 5.99602 2.50117 6.24747C1.41059 7.22999 0.587673 8.33683 0.139959 9.36712C-0.0338603 9.76712 -0.0300002 10.2108 0.129836 10.601C1.24049 13.3126 4.48326 16.75 10.0001 16.75C10.8741 16.75 11.68 16.6639 12.4235 16.5086C13.0002 16.3882 13.1633 15.6831 12.7405 15.2728V15.2728C12.5453 15.0833 12.2667 15.0101 11.9998 15.0626C11.3839 15.1836 10.7188 15.25 10.0001 15.25C5.18515 15.25 2.43521 12.272 1.51791 10.0325C1.50596 10.0033 1.50888 9.98059 1.51568 9.96494C1.85715 9.17913 2.51757 8.26748 3.43478 7.42578C3.76747 7.12048 3.79816 6.59341 3.47414 6.27892V6.27892ZM16.5428 13.7373C16.2272 13.431 16.2465 12.9204 16.5569 12.6088C17.3554 11.8075 17.9704 10.9194 18.4571 10.0897C18.4939 10.0269 18.489 9.95912 18.4597 9.91192C17.0155 7.58585 14.0306 4.75 10.0001 4.75C9.33037 4.75 8.67997 4.82776 8.05567 4.96835C7.78456 5.02941 7.49807 4.95861 7.29866 4.76506V4.76506C6.8837 4.36231 7.03604 3.66842 7.59858 3.53444C8.36334 3.35229 9.16684 3.25 10.0001 3.25C14.7628 3.25 18.1518 6.57225 19.734 9.12072C20.066 9.65543 20.0607 10.3204 19.7509 10.8485C19.206 11.7776 18.4889 12.8103 17.5356 13.7488C17.26 14.0201 16.8203 14.0067 16.5428 13.7373V13.7373Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M6.36296 9.08288C6.28918 9.37637 6.25 9.68361 6.25 10C6.25 12.0711 7.92893 13.75 10 13.75C10.3555 13.75 10.6994 13.7005 11.0253 13.6081L6.36296 9.08288ZM13.637 10.9171C13.7108 10.6236 13.75 10.3164 13.75 10C13.75 7.92893 12.0711 6.25 10 6.25C9.6445 6.25 9.30056 6.29947 8.97468 6.39189L13.637 10.9171Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent tbl:border-t-[1px] tbl:border-border-color"
+                >
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] border-b-[1px] border-[#f3f5f726] tbl:p-3 tbl:border-b-0"
+                  >
+                    <span>Mute</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1yxark7 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <circle
+                        cx="10"
+                        cy="4.5"
+                        fill="none"
+                        r="3.75"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      ></circle>
+                      <path
+                        d="M10 12C10 12.4142 10.3358 12.75 10.75 12.75H12.75C13.4705 12.75 13.7581 12.7516 13.9895 12.7821C15.6722 13.0036 16.9964 14.3278 17.2179 16.0105C17.2484 16.2419 17.25 16.5295 17.25 17.25C17.25 17.5061 17.2484 17.5614 17.2436 17.5979C17.1993 17.9345 16.9344 18.1993 16.5979 18.2436C16.5614 18.2484 16.506 18.25 16.25 18.25H12.75C12.3358 18.25 12 18.5858 12 19V19C12 19.4142 12.3358 19.75 12.75 19.75H16.25L16.2919 19.75C16.4823 19.7501 16.6459 19.7502 16.7937 19.7308C17.8033 19.5978 18.5978 18.8033 18.7308 17.7937C18.7502 17.646 18.7501 17.4823 18.75 17.292V17.292L18.75 17.25L18.75 17.1844C18.7501 16.5504 18.7501 16.1566 18.7051 15.8147C18.3949 13.4589 16.5411 11.6051 14.1853 11.2949C13.8435 11.2499 13.4497 11.25 12.8156 11.25L12.75 11.25H10.75C10.3358 11.25 10 11.5858 10 12V12Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M9.67859 15.4265L9.67859 15.4265C9.80959 15.0264 9.60635 14.6807 9.3748 14.5182C9.14085 14.3541 8.73272 14.2784 8.39838 14.5588C8.00033 14.8927 7.3258 15.1492 6.67146 15.1232C6.12745 15.1016 5.60071 14.7228 5.27564 14.094C4.95018 13.4643 4.91366 12.7417 5.18479 12.2126C5.2292 12.126 5.28288 12.0404 5.36407 11.9124L5.36741 11.9072C5.44401 11.7864 5.53932 11.6362 5.63571 11.4569C5.96639 10.8416 5.39228 10.0925 4.68842 10.3197L4.91883 11.0334L4.68842 10.3197C3.07583 10.8403 1.45517 12.3652 1.26765 14.3326C1.09773 16.1155 2.1977 17.925 3.85499 18.5991C4.76781 18.9704 5.92954 19.1116 7.04056 18.6508C8.17268 18.1813 9.11634 17.1436 9.67859 15.4265Z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      ></path>
+                    </svg>
+                  </div>
+
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] text-red-600 tbl:p-3 border-b-[1px] border-[#f3f5f726] tbl:border-b-0"
+                  >
+                    <span>Block</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 xhci195 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <path
+                        d="M3 3L18.5 18"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-width="1.5"
+                      ></path>
+                      <path
+                        d="M15 19C15 18.5858 14.6642 18.25 14.25 18.25H3.75003C3.49398 18.25 3.43859 18.2484 3.40213 18.2436C3.06558 18.1993 2.80075 17.9345 2.75645 17.5979C2.75165 17.5614 2.75003 17.5061 2.75003 17.25C2.75003 16.5295 2.75165 16.2419 2.78211 16.0105C3.00365 14.3278 4.32781 13.0036 6.01056 12.7821C6.24196 12.7516 6.52956 12.75 7.25003 12.75H8.12394C8.79958 12.75 9.13073 11.9267 8.64327 11.4589V11.4589C8.5036 11.3249 8.31752 11.25 8.12394 11.25H7.25003L7.18445 11.25C6.55037 11.25 6.15658 11.2499 5.81477 11.2949C3.45892 11.6051 1.6051 13.4589 1.29494 15.8147C1.24994 16.1566 1.24997 16.5504 1.25003 17.1844L1.25003 17.25L1.25001 17.2919C1.24991 17.4823 1.24983 17.6459 1.26928 17.7937C1.4022 18.8033 2.19669 19.5978 3.20635 19.7308C3.3541 19.7502 3.51777 19.7501 3.70809 19.75L3.75003 19.75H14.25C14.6642 19.75 15 19.4142 15 19V19ZM12 11.25V11.25C12.0623 11.25 12.0923 11.3249 12.0481 11.3688L11.6151 11.7984C11.4915 11.921 11.2927 11.9226 11.1671 11.8021V11.8021C10.9587 11.602 11.1003 11.25 11.3892 11.25H12Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M5.56721 4.47188C5.54196 4.44749 5.5 4.4649 5.5 4.5V4.5C5.5 6.98528 7.51472 9 10 9V9C10.0943 9 10.1373 8.88672 10.0694 8.8212L5.56721 4.47188ZM11.6174 8.23094C11.8191 8.4258 12.1236 8.47833 12.3621 8.33092C13.6451 7.53815 14.5 6.11891 14.5 4.5C14.5 2.01472 12.4853 0 10 0C8.32548 0 6.86458 0.914631 6.08962 2.27157C5.95057 2.51505 6.0136 2.81751 6.21527 3.01232V3.01232C6.59103 3.37532 7.25278 3.18476 7.55625 2.75946C8.10022 1.99708 8.99206 1.5 10 1.5C11.6569 1.5 13 2.84315 13 4.5C13 5.47083 12.5389 6.33395 11.8237 6.88227C11.4091 7.20012 11.2416 7.86798 11.6174 8.23094V8.23094Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] text-red-600 tbl:p-3"
+                  >
+                    <span>Report</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 24 24"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 xhci195 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <path
+                        d="M18.001 1h-12a5.006 5.006 0 0 0-5 5v9.005a5.006 5.006 0 0 0 5 5h2.514l2.789 2.712a1 1 0 0 0 1.394 0l2.787-2.712h2.516a5.006 5.006 0 0 0 5-5V6a5.006 5.006 0 0 0-5-5Zm3 14.005a3.003 3.003 0 0 1-3 3h-2.936a1 1 0 0 0-.79.387l-2.274 2.212-2.276-2.212a1 1 0 0 0-.79-.387H6a3.003 3.003 0 0 1-3-3V6a3.003 3.003 0 0 1 3-3h12a3.003 3.003 0 0 1 3 3Zm-9-1.66a1.229 1.229 0 1 0 1.228 1.228A1.23 1.23 0 0 0 12 13.344Zm0-8.117a1.274 1.274 0 0 0-.933.396 1.108 1.108 0 0 0-.3.838l.347 4.861a.892.892 0 0 0 1.77 0l.348-4.86a1.106 1.106 0 0 0-.3-.838A1.272 1.272 0 0 0 12 5.228Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent tbl:border-t-[1px] tbl:border-border-color"
+                >
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] tbl:p-3"
+                  >
+                    <span>Copy link</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 18 18"
+                      class="w-5 h-5"
+                    >
+                      <title></title>
+                      <path
+                        d="M8.39992 5.44993L9.50669 4.34316C11.2046 2.64524 13.9575 2.64524 15.6554 4.34316V4.34316V4.34316C17.3533 6.04108 17.3533 8.79396 15.6554 10.4919L14.5486 11.5987"
+                        stroke="white"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-width="1.65"
+                      ></path>
+                      <path
+                        d="M5.44773 8.40114L4.34096 9.50791C2.64304 11.2058 2.64304 13.9587 4.34096 15.6566V15.6566V15.6566C6.03889 17.3546 8.79176 17.3546 10.4897 15.6566L11.5965 14.5499"
+                        stroke="white"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-width="1.65"
+                      ></path>
+                      <path
+                        d="M12.7051 7.29565L7.2942 12.7065"
+                        stroke="white"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-width="1.65"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-content-container">
+          <div class="post-text">CSC13008-Mini-Threads</div>
+          <div
+            class="img-container flex gap-2 overflow-hidden overflow-x-auto"
+          ></div>
+        </div>
+        <div class="post-actions flex gap-1 mt-2 ml-[-12px] select-none">
+          <div
+            class="post-like flex gap-1 justify-center items-center cursor-pointer hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+          >
+            <svg
+              aria-label="Thích"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 x73je2i xvlca1e h-5 w-5 text-[#CCCCCC]"
+              style="--fill: transparent; --height: 19px; --width: 18.75px"
+            >
+              <title>Thích</title>
+              <path
+                d="M1.34375 7.53125L1.34375 7.54043C1.34374 8.04211 1.34372 8.76295 1.6611 9.65585C1.9795 10.5516 2.60026 11.5779 3.77681 12.7544C5.59273 14.5704 7.58105 16.0215 8.33387 16.5497C8.73525 16.8313 9.26573 16.8313 9.66705 16.5496C10.4197 16.0213 12.4074 14.5703 14.2232 12.7544C15.3997 11.5779 16.0205 10.5516 16.3389 9.65585C16.6563 8.76296 16.6563 8.04211 16.6562 7.54043V7.53125C16.6562 5.23466 15.0849 3.25 12.6562 3.25C11.5214 3.25 10.6433 3.78244 9.99228 4.45476C9.59009 4.87012 9.26356 5.3491 9 5.81533C8.73645 5.3491 8.40991 4.87012 8.00772 4.45476C7.35672 3.78244 6.47861 3.25 5.34375 3.25C2.9151 3.25 1.34375 5.23466 1.34375 7.53125Z"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="1.25"
+              ></path>
+            </svg>
+            <div class="like-num text-[#ccc] text-[13px] font-normal pl-1">
+              2
+            </div>
+          </div>
+
+          <div
+            onclick="window.location.href='./detail-post.html'"
+            class="post-comment flex gap-1 justify-center items-center cursor-pointer hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+          >
+            <svg
+              aria-label="Trả lời"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 xbh8q5q x73je2i x1f6yumg xvlca1e h-5 w-5 text-[#CCCCCC]"
+              style="--fill: currentColor; --height: 18px; --width: 18px"
+            >
+              <title>Trả lời</title>
+              <path
+                d="M15.376 13.2177L16.2861 16.7955L12.7106 15.8848C12.6781 15.8848 12.6131 15.8848 12.5806 15.8848C11.3779 16.5678 9.94767 16.8931 8.41995 16.7955C4.94194 16.5353 2.08152 13.7381 1.72397 10.2578C1.2689 5.63919 5.13697 1.76863 9.75264 2.22399C13.2307 2.58177 16.0261 5.41151 16.2861 8.92429C16.4161 10.453 16.0586 11.8841 15.376 13.0876C15.376 13.1526 15.376 13.1852 15.376 13.2177Z"
+                stroke="currentColor"
+                fill="none"
+                stroke-linejoin="round"
+                stroke-width="1.25"
+              ></path>
+            </svg>
+            <div class="comment-num text-[#ccc] text-[13px] font-normal pl-1">
+              3
+            </div>
+          </div>
+
+          <div
+            class="post-repost flex gap-1 justify-center items-center cursor-pointer hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+          >
+            <svg
+              aria-label="Đăng lại"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 h-5 w-5 text-[#CCCCCC]"
+              style="--fill: currentColor; --height: 18px; --width: 18px"
+            >
+              <title>Đăng lại</title>
+              <path
+                d="M6.41256 1.23531C6.6349 0.971277 7.02918 0.937481 7.29321 1.15982L9.96509 3.40982C10.1022 3.52528 10.1831 3.69404 10.1873 3.87324C10.1915 4.05243 10.1186 4.2248 9.98706 4.34656L7.31518 6.81971C7.06186 7.05419 6.66643 7.03892 6.43196 6.7856C6.19748 6.53228 6.21275 6.13685 6.46607 5.90237L7.9672 4.51289H5.20312C3.68434 4.51289 2.45312 5.74411 2.45312 7.26289V9.51289V11.7629C2.45312 13.2817 3.68434 14.5129 5.20312 14.5129C5.5483 14.5129 5.82812 14.7927 5.82812 15.1379C5.82812 15.4831 5.5483 15.7629 5.20312 15.7629C2.99399 15.7629 1.20312 13.972 1.20312 11.7629V9.51289V7.26289C1.20312 5.05375 2.99399 3.26289 5.20312 3.26289H7.85002L6.48804 2.11596C6.22401 1.89362 6.19021 1.49934 6.41256 1.23531Z"
+                stroke="currentColor"
+                fill="#CCCCCC"
+                stroke-width="0.5"
+              ></path>
+              <path
+                d="M11.5874 17.7904C11.3651 18.0545 10.9708 18.0883 10.7068 17.8659L8.03491 15.6159C7.89781 15.5005 7.81687 15.3317 7.81267 15.1525C7.80847 14.9733 7.8814 14.801 8.01294 14.6792L10.6848 12.206C10.9381 11.9716 11.3336 11.9868 11.568 12.2402C11.8025 12.4935 11.7872 12.8889 11.5339 13.1234L10.0328 14.5129H12.7969C14.3157 14.5129 15.5469 13.2816 15.5469 11.7629V9.51286V7.26286C15.5469 5.74408 14.3157 4.51286 12.7969 4.51286C12.4517 4.51286 12.1719 4.23304 12.1719 3.88786C12.1719 3.54269 12.4517 3.26286 12.7969 3.26286C15.006 3.26286 16.7969 5.05373 16.7969 7.26286V9.51286V11.7629C16.7969 13.972 15.006 15.7629 12.7969 15.7629H10.15L11.512 16.9098C11.776 17.1321 11.8098 17.5264 11.5874 17.7904Z"
+                stroke="currentColor"
+                fill="#CCCCCC"
+                stroke-width="0.5"
+              ></path>
+            </svg>
+            <div class="repost-num text-[#ccc] text-[13px] font-normal pl-1">
+              50
+            </div>
+          </div>
+
+          <div
+            class="post-share cursor-pointer px-2 py-2 rounded-full hover:bg-[#222222]"
+          >
+            <svg
+              aria-label="Chia sẻ"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 xbh8q5q x73je2i x1f6yumg xvlca1e h-5 w-5 text-[#CCCCCC]"
+              style="--fill: currentColor; --height: 18px; --width: 18px"
+            >
+              <title>Chia sẻ</title>
+              <path
+                d="M15.6097 4.09082L6.65039 9.11104"
+                stroke="currentColor"
+                fill="none"
+                stroke-linejoin="round"
+                stroke-width="1.25"
+              ></path>
+              <path
+                d="M7.79128 14.439C8.00463 15.3275 8.11131 15.7718 8.33426 15.932C8.52764 16.071 8.77617 16.1081 9.00173 16.0318C9.26179 15.9438 9.49373 15.5501 9.95761 14.7628L15.5444 5.2809C15.8883 4.69727 16.0603 4.40546 16.0365 4.16566C16.0159 3.95653 15.9071 3.76612 15.7374 3.64215C15.5428 3.5 15.2041 3.5 14.5267 3.5H3.71404C2.81451 3.5 2.36474 3.5 2.15744 3.67754C1.97758 3.83158 1.88253 4.06254 1.90186 4.29856C1.92415 4.57059 2.24363 4.88716 2.88259 5.52032L6.11593 8.7243C6.26394 8.87097 6.33795 8.94431 6.39784 9.02755C6.451 9.10144 6.4958 9.18101 6.53142 9.26479C6.57153 9.35916 6.59586 9.46047 6.64451 9.66309L7.79128 14.439Z"
+                stroke="currentColor"
+                fill="none"
+                stroke-linejoin="round"
+                stroke-width="1.25"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="post-container flex px-6 py-4 border-t border-border-color cursor-pointer"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png"
+        class="w-9 h-9 rounded-full mt-1 select-none"
+        alt=""
+      />
+      <div class="post-content flex flex-col gap-1 ml-2 w-full">
+        <div class="post-top flex w-full justify-between">
+          <div class="post-user-info flex gap-2">
+            <div class="post-username relative group">
+              <span class="hover:underline text-[15px] font-user-weight"
+                >justinbieber</span
+              >
+              <div
+                class="user-card absolute left-0 top-full mt-2 w-80 h-[200px] p-4 bg-[#181818] border border-border-color rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 hidden"
+              >
+                <div class="hover-top flex items-center justify-between mt-4">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/9/9e/JustinBieberWhatDoYouMeanCover.png"
+                    class="w-16 h-16 rounded-full ml-3"
+                    alt="User Icon"
+                  />
+                </div>
+                <div class="hover-bottom mt-1">
+                  <div class="hover-followers text-[#777777]">
+                    700 followers
+                  </div>
+                  <button
+                    class="follow-btn mt-4 px-[120px] py-1 bg-white text-black font-semibold rounded-md"
+                  >
+                    Follow
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="post-time-stamp text-[15px] text-secondary-text">
+              50m
+            </div>
+          </div>
+          <div
+            class="main-post-more-btn p-1 hover:bg-[#222222] rounded-[20px] relative"
+          >
+            <svg
+              aria-label="Xem thêm"
+              role="img"
+              viewBox="0 0 24 24"
+              class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1gaogpn text-[#777777] h-5 w-5"
+              style="--fill: currentColor; --height: 20px; --width: 20px"
+            >
+              <title>Xem thêm</title>
+              <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+              <circle cx="6" cy="12" r="1.5" fill="currentColor"></circle>
+              <circle cx="18" cy="12" r="1.5" fill="currentColor"></circle>
+            </svg>
+
+            <div
+              class="main-post-more-list hidden select-none overflow-hidden fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] items-end text-primary-text text-[15px] font-semibold border-[1px] border-border-color rounded-t-2xl shadow-[0_10.5px_21px_rgba(0,_0,_0,_0.078)] tbl:absolute tbl:top-full tbl:z-[1] tbl:w-[224px] tbl:right-2 tbl:my-2 tbl:mr-[-19px] tbl:bg-content-bg tbl:left-auto tbl:bottom-auto tbl:rounded-b-2xl"
+            >
+              <div
+                class="w-screen box-border p-4 pt-0 bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726] border-b-0 tbl:p-0 tbl:rounded-none tbl:border-0 tbl:w-full"
+              >
+                <div class="w-full py-3 flex justify-center tbl:hidden">
+                  <div class="w-10 h-1 bg-secondary-text rounded-full"></div>
+                </div>
+                <div
+                  class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent"
+                >
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer border-b-[1px] border-[#f3f5f726] hover:bg-[#212121] tbl:p-3 tbl:border-b-0"
+                  >
+                    <span>Save</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="w-5 h-5"
+                    >
+                      <title></title>
+                      <path
+                        stroke="white"
+                        fill="none"
+                        d="M3.40039 17.7891V3.94995C3.40039 2.43117 4.6316 1.19995 6.15039 1.19995H13.8448C15.3636 1.19995 16.5948 2.43117 16.5948 3.94995V17.6516C16.5948 18.592 15.4579 19.063 14.7929 18.398L10.6201 14.2252C10.4198 14.0249 10.097 14.0184 9.88889 14.2106L5.17191 18.5647C4.49575 19.1888 3.40039 18.7093 3.40039 17.7891Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] tbl:p-3"
+                  >
+                    <span>Not interested</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1yxark7 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <path
+                        d="M1.5 1.75L18.5 18.25"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-width="1.5"
+                      ></path>
+                      <path
+                        d="M3.47414 6.27892C3.20456 6.01727 2.78029 5.99602 2.50117 6.24747C1.41059 7.22999 0.587673 8.33683 0.139959 9.36712C-0.0338603 9.76712 -0.0300002 10.2108 0.129836 10.601C1.24049 13.3126 4.48326 16.75 10.0001 16.75C10.8741 16.75 11.68 16.6639 12.4235 16.5086C13.0002 16.3882 13.1633 15.6831 12.7405 15.2728V15.2728C12.5453 15.0833 12.2667 15.0101 11.9998 15.0626C11.3839 15.1836 10.7188 15.25 10.0001 15.25C5.18515 15.25 2.43521 12.272 1.51791 10.0325C1.50596 10.0033 1.50888 9.98059 1.51568 9.96494C1.85715 9.17913 2.51757 8.26748 3.43478 7.42578C3.76747 7.12048 3.79816 6.59341 3.47414 6.27892V6.27892ZM16.5428 13.7373C16.2272 13.431 16.2465 12.9204 16.5569 12.6088C17.3554 11.8075 17.9704 10.9194 18.4571 10.0897C18.4939 10.0269 18.489 9.95912 18.4597 9.91192C17.0155 7.58585 14.0306 4.75 10.0001 4.75C9.33037 4.75 8.67997 4.82776 8.05567 4.96835C7.78456 5.02941 7.49807 4.95861 7.29866 4.76506V4.76506C6.8837 4.36231 7.03604 3.66842 7.59858 3.53444C8.36334 3.35229 9.16684 3.25 10.0001 3.25C14.7628 3.25 18.1518 6.57225 19.734 9.12072C20.066 9.65543 20.0607 10.3204 19.7509 10.8485C19.206 11.7776 18.4889 12.8103 17.5356 13.7488C17.26 14.0201 16.8203 14.0067 16.5428 13.7373V13.7373Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M6.36296 9.08288C6.28918 9.37637 6.25 9.68361 6.25 10C6.25 12.0711 7.92893 13.75 10 13.75C10.3555 13.75 10.6994 13.7005 11.0253 13.6081L6.36296 9.08288ZM13.637 10.9171C13.7108 10.6236 13.75 10.3164 13.75 10C13.75 7.92893 12.0711 6.25 10 6.25C9.6445 6.25 9.30056 6.29947 8.97468 6.39189L13.637 10.9171Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent tbl:border-t-[1px] tbl:border-border-color"
+                >
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] border-b-[1px] border-[#f3f5f726] tbl:p-3 tbl:border-b-0"
+                  >
+                    <span>Mute</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1yxark7 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <circle
+                        cx="10"
+                        cy="4.5"
+                        fill="none"
+                        r="3.75"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      ></circle>
+                      <path
+                        d="M10 12C10 12.4142 10.3358 12.75 10.75 12.75H12.75C13.4705 12.75 13.7581 12.7516 13.9895 12.7821C15.6722 13.0036 16.9964 14.3278 17.2179 16.0105C17.2484 16.2419 17.25 16.5295 17.25 17.25C17.25 17.5061 17.2484 17.5614 17.2436 17.5979C17.1993 17.9345 16.9344 18.1993 16.5979 18.2436C16.5614 18.2484 16.506 18.25 16.25 18.25H12.75C12.3358 18.25 12 18.5858 12 19V19C12 19.4142 12.3358 19.75 12.75 19.75H16.25L16.2919 19.75C16.4823 19.7501 16.6459 19.7502 16.7937 19.7308C17.8033 19.5978 18.5978 18.8033 18.7308 17.7937C18.7502 17.646 18.7501 17.4823 18.75 17.292V17.292L18.75 17.25L18.75 17.1844C18.7501 16.5504 18.7501 16.1566 18.7051 15.8147C18.3949 13.4589 16.5411 11.6051 14.1853 11.2949C13.8435 11.2499 13.4497 11.25 12.8156 11.25L12.75 11.25H10.75C10.3358 11.25 10 11.5858 10 12V12Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M9.67859 15.4265L9.67859 15.4265C9.80959 15.0264 9.60635 14.6807 9.3748 14.5182C9.14085 14.3541 8.73272 14.2784 8.39838 14.5588C8.00033 14.8927 7.3258 15.1492 6.67146 15.1232C6.12745 15.1016 5.60071 14.7228 5.27564 14.094C4.95018 13.4643 4.91366 12.7417 5.18479 12.2126C5.2292 12.126 5.28288 12.0404 5.36407 11.9124L5.36741 11.9072C5.44401 11.7864 5.53932 11.6362 5.63571 11.4569C5.96639 10.8416 5.39228 10.0925 4.68842 10.3197L4.91883 11.0334L4.68842 10.3197C3.07583 10.8403 1.45517 12.3652 1.26765 14.3326C1.09773 16.1155 2.1977 17.925 3.85499 18.5991C4.76781 18.9704 5.92954 19.1116 7.04056 18.6508C8.17268 18.1813 9.11634 17.1436 9.67859 15.4265Z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      ></path>
+                    </svg>
+                  </div>
+
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] text-red-600 tbl:p-3 border-b-[1px] border-[#f3f5f726] tbl:border-b-0"
+                  >
+                    <span>Block</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 20 20"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 xhci195 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <path
+                        d="M3 3L18.5 18"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-width="1.5"
+                      ></path>
+                      <path
+                        d="M15 19C15 18.5858 14.6642 18.25 14.25 18.25H3.75003C3.49398 18.25 3.43859 18.2484 3.40213 18.2436C3.06558 18.1993 2.80075 17.9345 2.75645 17.5979C2.75165 17.5614 2.75003 17.5061 2.75003 17.25C2.75003 16.5295 2.75165 16.2419 2.78211 16.0105C3.00365 14.3278 4.32781 13.0036 6.01056 12.7821C6.24196 12.7516 6.52956 12.75 7.25003 12.75H8.12394C8.79958 12.75 9.13073 11.9267 8.64327 11.4589V11.4589C8.5036 11.3249 8.31752 11.25 8.12394 11.25H7.25003L7.18445 11.25C6.55037 11.25 6.15658 11.2499 5.81477 11.2949C3.45892 11.6051 1.6051 13.4589 1.29494 15.8147C1.24994 16.1566 1.24997 16.5504 1.25003 17.1844L1.25003 17.25L1.25001 17.2919C1.24991 17.4823 1.24983 17.6459 1.26928 17.7937C1.4022 18.8033 2.19669 19.5978 3.20635 19.7308C3.3541 19.7502 3.51777 19.7501 3.70809 19.75L3.75003 19.75H14.25C14.6642 19.75 15 19.4142 15 19V19ZM12 11.25V11.25C12.0623 11.25 12.0923 11.3249 12.0481 11.3688L11.6151 11.7984C11.4915 11.921 11.2927 11.9226 11.1671 11.8021V11.8021C10.9587 11.602 11.1003 11.25 11.3892 11.25H12Z"
+                        fill="currentColor"
+                      ></path>
+                      <path
+                        d="M5.56721 4.47188C5.54196 4.44749 5.5 4.4649 5.5 4.5V4.5C5.5 6.98528 7.51472 9 10 9V9C10.0943 9 10.1373 8.88672 10.0694 8.8212L5.56721 4.47188ZM11.6174 8.23094C11.8191 8.4258 12.1236 8.47833 12.3621 8.33092C13.6451 7.53815 14.5 6.11891 14.5 4.5C14.5 2.01472 12.4853 0 10 0C8.32548 0 6.86458 0.914631 6.08962 2.27157C5.95057 2.51505 6.0136 2.81751 6.21527 3.01232V3.01232C6.59103 3.37532 7.25278 3.18476 7.55625 2.75946C8.10022 1.99708 8.99206 1.5 10 1.5C11.6569 1.5 13 2.84315 13 4.5C13 5.47083 12.5389 6.33395 11.8237 6.88227C11.4091 7.20012 11.2416 7.86798 11.6174 8.23094V8.23094Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] text-red-600 tbl:p-3"
+                  >
+                    <span>Report</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 24 24"
+                      class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 xhci195 w-5 h-5"
+                      style="
+                        --fill: currentColor;
+                        --height: 20px;
+                        --width: 20px;
+                      "
+                    >
+                      <title></title>
+                      <path
+                        d="M18.001 1h-12a5.006 5.006 0 0 0-5 5v9.005a5.006 5.006 0 0 0 5 5h2.514l2.789 2.712a1 1 0 0 0 1.394 0l2.787-2.712h2.516a5.006 5.006 0 0 0 5-5V6a5.006 5.006 0 0 0-5-5Zm3 14.005a3.003 3.003 0 0 1-3 3h-2.936a1 1 0 0 0-.79.387l-2.274 2.212-2.276-2.212a1 1 0 0 0-.79-.387H6a3.003 3.003 0 0 1-3-3V6a3.003 3.003 0 0 1 3-3h12a3.003 3.003 0 0 1 3 3Zm-9-1.66a1.229 1.229 0 1 0 1.228 1.228A1.23 1.23 0 0 0 12 13.344Zm0-8.117a1.274 1.274 0 0 0-.933.396 1.108 1.108 0 0 0-.3.838l.347 4.861a.892.892 0 0 0 1.77 0l.348-4.86a1.106 1.106 0 0 0-.3-.838A1.272 1.272 0 0 0 12 5.228Z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div
+                  class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent tbl:border-t-[1px] tbl:border-border-color"
+                >
+                  <div
+                    class="main-post-more-list__item min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] tbl:p-3"
+                  >
+                    <span>Copy link</span>
+                    <svg
+                      aria-label=""
+                      role="img"
+                      viewBox="0 0 18 18"
+                      class="w-5 h-5"
+                    >
+                      <title></title>
+                      <path
+                        d="M8.39992 5.44993L9.50669 4.34316C11.2046 2.64524 13.9575 2.64524 15.6554 4.34316V4.34316V4.34316C17.3533 6.04108 17.3533 8.79396 15.6554 10.4919L14.5486 11.5987"
+                        stroke="white"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-width="1.65"
+                      ></path>
+                      <path
+                        d="M5.44773 8.40114L4.34096 9.50791C2.64304 11.2058 2.64304 13.9587 4.34096 15.6566V15.6566V15.6566C6.03889 17.3546 8.79176 17.3546 10.4897 15.6566L11.5965 14.5499"
+                        stroke="white"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-width="1.65"
+                      ></path>
+                      <path
+                        d="M12.7051 7.29565L7.2942 12.7065"
+                        stroke="white"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-width="1.65"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="post-content-container">
+          <div class="post-text">CSC13008-Mini-Threads</div>
+          <div
+            class="img-container flex gap-2 overflow-hidden overflow-x-auto"
+          ></div>
+        </div>
+        <div class="post-actions flex gap-1 mt-2 ml-[-12px] select-none">
+          <div
+            class="post-like flex gap-1 justify-center items-center cursor-pointer hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+          >
+            <svg
+              aria-label="Thích"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 x73je2i xvlca1e h-5 w-5 text-[#CCCCCC]"
+              style="--fill: transparent; --height: 19px; --width: 18.75px"
+            >
+              <title>Thích</title>
+              <path
+                d="M1.34375 7.53125L1.34375 7.54043C1.34374 8.04211 1.34372 8.76295 1.6611 9.65585C1.9795 10.5516 2.60026 11.5779 3.77681 12.7544C5.59273 14.5704 7.58105 16.0215 8.33387 16.5497C8.73525 16.8313 9.26573 16.8313 9.66705 16.5496C10.4197 16.0213 12.4074 14.5703 14.2232 12.7544C15.3997 11.5779 16.0205 10.5516 16.3389 9.65585C16.6563 8.76296 16.6563 8.04211 16.6562 7.54043V7.53125C16.6562 5.23466 15.0849 3.25 12.6562 3.25C11.5214 3.25 10.6433 3.78244 9.99228 4.45476C9.59009 4.87012 9.26356 5.3491 9 5.81533C8.73645 5.3491 8.40991 4.87012 8.00772 4.45476C7.35672 3.78244 6.47861 3.25 5.34375 3.25C2.9151 3.25 1.34375 5.23466 1.34375 7.53125Z"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="1.25"
+              ></path>
+            </svg>
+            <div class="like-num text-[#ccc] text-[13px] font-normal pl-1">
+              2
+            </div>
+          </div>
+
+          <div
+            onclick="window.location.href='./detail-post.html'"
+            class="post-comment flex gap-1 justify-center items-center cursor-pointer hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+          >
+            <svg
+              aria-label="Trả lời"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 xbh8q5q x73je2i x1f6yumg xvlca1e h-5 w-5 text-[#CCCCCC]"
+              style="--fill: currentColor; --height: 18px; --width: 18px"
+            >
+              <title>Trả lời</title>
+              <path
+                d="M15.376 13.2177L16.2861 16.7955L12.7106 15.8848C12.6781 15.8848 12.6131 15.8848 12.5806 15.8848C11.3779 16.5678 9.94767 16.8931 8.41995 16.7955C4.94194 16.5353 2.08152 13.7381 1.72397 10.2578C1.2689 5.63919 5.13697 1.76863 9.75264 2.22399C13.2307 2.58177 16.0261 5.41151 16.2861 8.92429C16.4161 10.453 16.0586 11.8841 15.376 13.0876C15.376 13.1526 15.376 13.1852 15.376 13.2177Z"
+                stroke="currentColor"
+                fill="none"
+                stroke-linejoin="round"
+                stroke-width="1.25"
+              ></path>
+            </svg>
+            <div class="comment-num text-[#ccc] text-[13px] font-normal pl-1">
+              3
+            </div>
+          </div>
+
+          <div
+            class="post-repost flex gap-1 justify-center items-center cursor-pointer hover:bg-[#222222] px-3 py-2 rounded-[20px]"
+          >
+            <svg
+              aria-label="Đăng lại"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 h-5 w-5 text-[#CCCCCC]"
+              style="--fill: currentColor; --height: 18px; --width: 18px"
+            >
+              <title>Đăng lại</title>
+              <path
+                d="M6.41256 1.23531C6.6349 0.971277 7.02918 0.937481 7.29321 1.15982L9.96509 3.40982C10.1022 3.52528 10.1831 3.69404 10.1873 3.87324C10.1915 4.05243 10.1186 4.2248 9.98706 4.34656L7.31518 6.81971C7.06186 7.05419 6.66643 7.03892 6.43196 6.7856C6.19748 6.53228 6.21275 6.13685 6.46607 5.90237L7.9672 4.51289H5.20312C3.68434 4.51289 2.45312 5.74411 2.45312 7.26289V9.51289V11.7629C2.45312 13.2817 3.68434 14.5129 5.20312 14.5129C5.5483 14.5129 5.82812 14.7927 5.82812 15.1379C5.82812 15.4831 5.5483 15.7629 5.20312 15.7629C2.99399 15.7629 1.20312 13.972 1.20312 11.7629V9.51289V7.26289C1.20312 5.05375 2.99399 3.26289 5.20312 3.26289H7.85002L6.48804 2.11596C6.22401 1.89362 6.19021 1.49934 6.41256 1.23531Z"
+                stroke="currentColor"
+                fill="#CCCCCC"
+                stroke-width="0.5"
+              ></path>
+              <path
+                d="M11.5874 17.7904C11.3651 18.0545 10.9708 18.0883 10.7068 17.8659L8.03491 15.6159C7.89781 15.5005 7.81687 15.3317 7.81267 15.1525C7.80847 14.9733 7.8814 14.801 8.01294 14.6792L10.6848 12.206C10.9381 11.9716 11.3336 11.9868 11.568 12.2402C11.8025 12.4935 11.7872 12.8889 11.5339 13.1234L10.0328 14.5129H12.7969C14.3157 14.5129 15.5469 13.2816 15.5469 11.7629V9.51286V7.26286C15.5469 5.74408 14.3157 4.51286 12.7969 4.51286C12.4517 4.51286 12.1719 4.23304 12.1719 3.88786C12.1719 3.54269 12.4517 3.26286 12.7969 3.26286C15.006 3.26286 16.7969 5.05373 16.7969 7.26286V9.51286V11.7629C16.7969 13.972 15.006 15.7629 12.7969 15.7629H10.15L11.512 16.9098C11.776 17.1321 11.8098 17.5264 11.5874 17.7904Z"
+                stroke="currentColor"
+                fill="#CCCCCC"
+                stroke-width="0.5"
+              ></path>
+            </svg>
+            <div class="repost-num text-[#ccc] text-[13px] font-normal pl-1">
+              50
+            </div>
+          </div>
+
+          <div
+            class="post-share cursor-pointer px-2 py-2 rounded-full hover:bg-[#222222]"
+          >
+            <svg
+              aria-label="Chia sẻ"
+              role="img"
+              viewBox="0 0 18 18"
+              class="x1lliihq x2lah0s x1f5funs x1n2onr6 x1bl4301 x1i0azm7 xbh8q5q x73je2i x1f6yumg xvlca1e h-5 w-5 text-[#CCCCCC]"
+              style="--fill: currentColor; --height: 18px; --width: 18px"
+            >
+              <title>Chia sẻ</title>
+              <path
+                d="M15.6097 4.09082L6.65039 9.11104"
+                stroke="currentColor"
+                fill="none"
+                stroke-linejoin="round"
+                stroke-width="1.25"
+              ></path>
+              <path
+                d="M7.79128 14.439C8.00463 15.3275 8.11131 15.7718 8.33426 15.932C8.52764 16.071 8.77617 16.1081 9.00173 16.0318C9.26179 15.9438 9.49373 15.5501 9.95761 14.7628L15.5444 5.2809C15.8883 4.69727 16.0603 4.40546 16.0365 4.16566C16.0159 3.95653 15.9071 3.76612 15.7374 3.64215C15.5428 3.5 15.2041 3.5 14.5267 3.5H3.71404C2.81451 3.5 2.36474 3.5 2.15744 3.67754C1.97758 3.83158 1.88253 4.06254 1.90186 4.29856C1.92415 4.57059 2.24363 4.88716 2.88259 5.52032L6.11593 8.7243C6.26394 8.87097 6.33795 8.94431 6.39784 9.02755C6.451 9.10144 6.4958 9.18101 6.53142 9.26479C6.57153 9.35916 6.59586 9.46047 6.64451 9.66309L7.79128 14.439Z"
+                stroke="currentColor"
+                fill="none"
+                stroke-linejoin="round"
+                stroke-width="1.25"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  let followBtn = document.querySelector(".follow-btn1");
+  let followText = followBtn.querySelector("p");
+
+  followBtn.addEventListener("click", () => {
+    followBtn.classList.toggle("following");
+
+    followText.textContent = followBtn.classList.contains("following")
+      ? "Following"
+      : "Follow";
+  });
+</script>
+<script src="/Js/profile.js"></script>

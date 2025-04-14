@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Threads</title>
+    <link rel="icon" type="image/svg+xml" href="../Img/threads-app-icon.svg" />
+    <link href="../Css/output.css" rel="stylesheet" />
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 1.5s ease-in-out;
+            /* Hiệu ứng trong 1.5 giây */
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] leading-relaxed p-0 w-full h-screen overflow-hidden flex">
+
+    <%- include('auth_popup') %>
+
+        <div class="signup-container flex w-full h-full flex-col items-center justify-center">
+            <div
+                class="decoration absolute top-0 overflow-hidden portrait-mobile:hidden flexible-decoration:mt-[calc(100vh-860px)] ">
+                <picture>
+                    <source srcset="https://static.cdninstagram.com/rsrc.php/yC/r/jxB9GUOHTf2.webp" type="image/webp" />
+                    <img alt="" height="510" width="1785"
+                        src="https://static.cdninstagram.com/rsrc.php/v3/ye/r/YVr3E4VYzmE.png" />
+                </picture>
+            </div>
+            <div id="success-message"
+                class="hidden animate-fade-in w-full h-full flex flex-col items-center justify-center text-white">
+                <!-- thêm thẻ svg -->
+                <img src="   https://cdn-icons-png.flaticon.com/512/10610/10610572.png " width="100px" height="100px"
+                    alt="" title="" class="img-small">
+                <h2 class="text-2xl font-bold mb-4 mt-4">Check Your Email</h2>
+                <p class="text-center text-sm max-w-[300px]">
+                    We've sent a confirmation email to your inbox. Please check your email to complete the sign-up
+                    process.
+                </p>
+                <button
+                    class="back_login-form__button mt-8 max-w-[370px] w-full h-[56px] bg-[#ffffff] rounded-[12px] text-[15px] font-semibold leading-[140%] text-[#101010] disabled:cursor-not-allowed disabled:text-[#10101066] relative">
+                    <div class="back_login-form__button-text" onclick="window.location.href='/auth/login'">Back to log
+                        in</div>
+                </button>
+            </div>
+            <div class="signup max-w-[350px]  flex flex-col items-center justify-center box-border shrink-0  ">
+                <div class="signup__logo h-[50px] mt-20 mb-4 cursor-pointer overflow-visible ">
+                    <div class="signup__logo h-[50px] mt-4 mb-4 cursor-pointer overflow-visible">
+
+                    </div>
+                </div>
+                <div
+                    class="signup__box flex flex-col   items-center justify-center mb-5 relative border-image-[linear-gradient(to_right,_#0a0a0a,_white,_#0a0a0a)_1]">
+                    <form id="signup-form" class="signup-form my-5 text-white  ">
+                        <div class="signup-form__message-wrapper mb-4">
+                            <span
+                                class="signup-form__message block font-semibold text-center text-[16px] leading-5 text-[#a8a8a8]">
+                                Sign up to see photos and videos from your friends.
+                            </span>
+                        </div>
+                        <div
+                            class="signup-form__group  w-[370px] border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none">
+                            <input type="text"
+                                class="signup-form__input w-full p-[16px] border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none"
+                                required="true" autocapitalize="off" autocomplete="tel" name="email"
+                                placeholder="Email address" />
+                        </div>
+
+                        <div
+                            class="signup-form__group mt-4 w-[370px]  border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none">
+                            <input type="password"
+                                class="signup-form__input w-full p-[16px] border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none"
+                                required="true" autocapitalize="off" autocomplete="new-password" name="password"
+                                placeholder="Password" />
+                        </div>
+                        <div
+                            class="signup-form__group mt-4  w-[370px]  border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none">
+                            <input type="password"
+                                class="signup-form__input w-full p-[16px] border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none"
+                                required="true" autocapitalize="off" autocomplete="new-password" name="password_confirm"
+                                placeholder="Password Confirm" />
+                        </div>
+                        <div
+                            class="signup-form__group mt-4 w-[370px]  border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none">
+                            <input type="text"
+                                class="signup-form__input w-full p-[16px] border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none"
+                                name="fullname" placeholder="Full Name" required="true" />
+                        </div>
+                        <div
+                            class="signup-form__group mt-4  w-[370px]  border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none">
+                            <input type="text"
+                                class="signup-form__input w-full p-[16px] border-[1px] border-transparent rounded-[12px] text-[15px] bg-[#1e1e1e] focus:outline-none"
+                                maxlength="30" name="username" placeholder="Username" required="true" />
+                        </div>
+                        <!-- <p class="signup-form__notice text-[#a8a8a8] text-xs mx-10 leading-4  font-normal my-2">
+                            People who use our service may have uploaded your contact information to Mini Threads.
+                            <a href="#" class="notice-link text-[#e0f1ff]">Learn more</a>
+                            <br /><br />
+                            By signing up, you agree to our
+                            <a href="#" class="notice-link text-[#e0f1ff]">Terms</a>,
+                            <a href="#" class="notice-link text-[#e0f1ff]">Privacy Policy</a>
+                            and
+                            <a href="#" class="notice-link text-[#e0f1ff]">Cookies Policy</a>
+                        </p> -->
+                        <div class="signup-form__button-wrapper mt-4 flex items-center justify-center">
+                            <button
+                                class="signup-form__button w-full h-[56px] bg-[#ffffff] rounded-[12px] text-[15px] font-semibold leading-[140%] text-[#101010] disabled:cursor-not-allowed disabled:text-[#10101066] relative "
+                                type="submit" disabled>
+                                <span class="signup-form__button-text">Sign Up</span>
+                                <svg id="loading-spinner"
+                                    class="hidden tbl:hidden animate-spin h-5 w-full ml-2 absolute inset-0 m-auto  "
+                                    fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup__login-redirect flex flex-row gap-1 mb-6">
+                    <div class="singup__login-redirect-text text-white">Have an account?</div>
+                    <a href="/auth/login" class="signup__login-redirect-link text-[#0095f6] font-semibold">Log in</a>
+                </div>
+
+            </div>
+
+        </div>
+        <script src="/Js/signup.js"></script>
+        <script>
+
+        </script>
+
+</body>
+
+</html>

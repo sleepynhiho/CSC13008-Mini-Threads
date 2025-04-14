@@ -1,0 +1,87 @@
+<div
+    class="post-activity-wrapper fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] text-primary-text items-end justify-center hidden tbl:items-center">
+    <div
+        class="post-activity w-screen box-border bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726] tbl:w-[522px] tbl:pb-3 tbl:rounded-b-3xl">
+        <div class="post-activity-header flex justify-between items-center tbl:justify-center">
+            <div class="post-activity-back-btn p-[18px] cursor-pointer tbl:hidden">
+                <svg aria-label="Back" role="img" viewBox="0 0 24 24" class="w-5 h-5">
+                    <title>Back</title>
+                    <line x1="2.909" x2="22.001" y1="12.004" y2="12.004" stroke="white" fill="none"></line>
+                    <polyline points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="white" fill="none"></polyline>
+                </svg>
+            </div>
+            <div class="post-activity-title p-[18px] text-[16px] font-semibold">Post activity</div>
+            <div class="w-5 h-5 p-[18px] box-content tbl:hidden"></div>
+        </div>
+        <div class="mini-post-wrapper pb-2 px-6">
+            <div class="mini-post p-4 rounded-lg border-[1px] border-[#f3f5f726]">
+                <div class="mini-post-info flex flex-nowrap items-center">
+                    <img src="<%= post.user_id.profile.avt %>" alt="avatar"
+                        class="main-user-img w-9 h-9 rounded-full border-border-color border-[0.5px] object-cover select-none" />
+                    <div class="inline-block pl-3 flex-grow">
+                        <a href="/profile/<%= post.user_id._id %>"
+                            class="mini-post-username inline-block text-[15px] font-user-weight hover:underline"><%= post.user_id.profile.nick_name %></a>
+                        <p data-created-at="<%= post.createdAt %>" class="post-time-stamp inline-block text-[15px] text-secondary-text"></p>
+                    </div>
+                </div>
+                <div class="mini-post-content pt-[10px] w-full">
+                    <div class="text-primary-text font-normal break-words text-[15px]"><%= post.post_quote || 'Photo' %></div>
+                </div>
+            </div>
+        </div>
+        <div class="post-like w-full flex items-center">
+            <svg aria-label="Likes" role="img" viewBox="0 0 18 18" class="w-6 h-6 box-content pl-[30px] mr-[18px]">
+                <title>Likes</title>
+                <path stroke="white" fill="none"
+                    d="M1.34375 7.53125L1.34375 7.54043C1.34374 8.04211 1.34372 8.76295 1.6611 9.65585C1.9795 10.5516 2.60026 11.5779 3.77681 12.7544C5.59273 14.5704 7.58105 16.0215 8.33387 16.5497C8.73525 16.8313 9.26573 16.8313 9.66705 16.5496C10.4197 16.0213 12.4074 14.5703 14.2232 12.7544C15.3997 11.5779 16.0205 10.5516 16.3389 9.65585C16.6563 8.76296 16.6563 8.04211 16.6562 7.54043V7.53125C16.6562 5.23466 15.0849 3.25 12.6562 3.25C11.5214 3.25 10.6433 3.78244 9.99228 4.45476C9.59009 4.87012 9.26356 5.3491 9 5.81533C8.73645 5.3491 8.40991 4.87012 8.00772 4.45476C7.35672 3.78244 6.47861 3.25 5.34375 3.25C2.9151 3.25 1.34375 5.23466 1.34375 7.53125Z"
+                    stroke-width="1.25"></path>
+            </svg>
+            <div
+                class="flex w-full justify-between py-3 pr-6 text-15px font-semibold border-[#f3f5f726]">
+                <span>Like</span>
+                <span> <%= post.post_likes.length %></span>
+            </div>
+        </div>
+        <% if (post.post_likes.length > 0) { %>
+            <% post.post_likes.forEach((user, index) => { %>
+                <div class="post-user-liked w-full flex mt-4px relative cursor-pointer">
+                    <div class="user-liked-avatar py-3 pl-6 pr-0 tbl:pl-6 select-none">
+                        <a href="/profile/<%= user._id %>" class="block w-[41px] pt-1">
+                            <div class="w-9 h-9 relative">
+                                <img src="<%= user.profile.avt %>"
+                                    alt="avatar" class="w-9 h-9 rounded-full border-border-color border-[0.5px] object-cover" />
+                                <div class="absolute top-5 right-[-4px]">
+                                    <div class="bg-[#FF007A] w-[18px] h-[18px] border-[1px] border-[#101010] rounded-full box-content">
+                                        <svg aria-label="" role="img" viewBox="0 0 18 18">
+                                            <title></title>
+                                            <path fill="white"
+                                                d="M5 8.33956C5 6.84296 6.07645 5.75 7.48174 5.75C8.08884 5.75 8.61175 5.95938 9.00094 6.30299C9.3914 5.95863 9.91188 5.75 10.5183 5.75C11.9276 5.75 13 6.84345 13 8.33956C13 9.20812 12.6297 10.037 12.0266 10.7947C11.4237 11.5521 10.5712 12.2609 9.5565 12.9023L9.55379 12.904C9.48997 12.9437 9.41108 12.9882 9.32747 13.0242C9.25284 13.0563 9.1332 13.1001 9 13.1001C8.86687 13.1001 8.74693 13.0551 8.67518 13.0242C8.59318 12.9889 8.51482 12.9453 8.45151 12.9072L8.44748 12.9048L8.4435 12.9023C7.42882 12.2609 6.57626 11.5521 5.97338 10.7947C5.37032 10.037 5 9.20812 5 8.33956Z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="user-liked-content-container-1 w-full border-t-[1px] border-border-color pr-6">
+                        <div class="user-liked-content-container-2 py-3 pl-1 flex justify-between items-center">
+                            <div class="flex-grow">
+                                <a href="/profile/<%= user._id %>"
+                                    class="activity__post-username leading-[22.5px] max-w-[115px] tbl:max-w-[285px] pc:max-w-[370px] inline-block text-[15px] font-user-weight break-words hover:underline"><%= user.profile.nick_name %></a>
+                                <p class="user-liked-pickedtag text-[15px] font-normal text-secondary-text"> <%= user.profile.display_name %></p>
+                            </div>
+                            <% if (userid && user._id.toString() !== userid.toString()) { %>
+                                <div
+                                    follow-id="follow-<%= user._id %>"
+                                    class="user-liked-follow-btn min-w-[120px] h-[34px] border-[1px] border-border-color rounded-[10px] text-center leading-[34px] font-user-weight select-none <%= following.includes(user._id) ? 'text-[#777777]' : 'text-[#f3f5f7]' %>">
+                                    <%= following.includes(user._id) ? 'Following' : 'Follow' %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+       
+    </div>
+</div>

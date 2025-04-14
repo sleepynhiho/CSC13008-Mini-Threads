@@ -1,0 +1,42 @@
+<div
+    class="heading__section hidden h-[60px] fixed z-[2] top-0 bg-main-bg box-border tbl:grid tbl:grid-cols-[1fr_50%_1fr] tbl:grid-rows-[1fr] tbl:min-w-[546px] tbl:max-w-[640px] pc:w-[640px]">
+    <div class="heading__section__left flex items-center justify-start pl-4"></div>
+    <div class="heading__section__middle flex justify-center items-center">
+        <a href="#"
+            class="refresh-btn inline-block p-4 font-semibold text-[15px] text-primary-text text-center select-none">
+            <%= header %>
+        </a>
+        <% if (userid && refreshItems && refreshItems.length > 0) { %>
+            <div id="refresh-option"
+                class="refresh-option inline-flex justify-center items-center w-6 h-6 border-[1px] border-[#363737] bg-[#181818] rounded-full cursor-pointer relative">
+                <svg aria-label="All" role="img" viewBox="0 0 13 12" class="w-3 h-3">
+                    <title>All</title>
+                    <path d="m2.5 4.2 4 4 4-4" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5"></path>
+                </svg>
+            
+                <div id="refresh-list"
+                    class="refresh-list absolute top-full my-[6px] left-0 text-primary-text p-2 w-[240px] bg-content-bg rounded-2xl border-[1px] border-[#2d2d2d] shadow-[0_10.5px_21px_#00000014] transform -translate-x-1/2 opacity-0 -translate-y-2 transition-all duration-100 ease-in-out pointer-events-none">
+                    <% refreshItems.forEach(function(item) { %>
+                        <a href="<%= item.link %>"
+                            class="refresh-list__item flex items-center p-3 min-h-6 h-[52px] w-full rounded-xl cursor-pointer hover:bg-[#212121]">
+                            <span class="refresh-list__item-name font-semibold text-[15px] flex-grow select-none">
+                                <%= item.name %> 
+                            </span>
+                            <% if (item.name.toLowerCase().includes(selectedItem.toLowerCase())) { %>
+                                <div class="refresh-list__item-selected flex items-center ml-2">
+                                    <svg aria-label="Checkmark: selected" role="img" viewBox="0 0 24 24" class="w-4 h-4">
+                                        <title>Checkmark: selected</title>
+                                        <polyline points="21.648 5.352 9.002 17.998 2.358 11.358" fill="none" stroke="white"
+                                            stroke-width="3"></polyline>
+                                    </svg>
+                                </div>
+                            <% } %>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <div class="heading__section__right flex justify-end items-center pr-4"></div>
+</div>

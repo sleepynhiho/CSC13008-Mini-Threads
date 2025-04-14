@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Threads</title>
+    <link rel="icon" type="image/svg+xml" href="../Img/threads-app-icon.svg" />
+    <link href="../Css/output.css" rel="stylesheet" />
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 1.5s ease-in-out;
+            /* Hiệu ứng trong 1.5 giây */
+        }
+
+        @keyframes slide-down {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .decoration {
+            animation: slide-down 0.8s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] leading-relaxed p-0 w-full h-screen overflow-hidden flex">
+    <div class="verify-container flex w-full h-full flex-col items-center justify-center">
+        <div
+            class="decoration absolute top-0 overflow-hidden portrait-mobile:hidden flexible-decoration:mt-[calc(100vh-860px)]">
+            <picture>
+                <source srcset="https://static.cdninstagram.com/rsrc.php/yC/r/jxB9GUOHTf2.webp" type="image/webp" />
+                <img alt="" height="510" width="1785"
+                    src="https://static.cdninstagram.com/rsrc.php/v3/ye/r/YVr3E4VYzmE.png" />
+            </picture>
+        </div>
+
+        <div id="success-message"
+            class="animate-fade-in w-full h-full flex flex-col items-center justify-center text-white">
+            <!-- thêm thẻ svg -->
+            <img src="https://cdn-icons-png.flaticon.com/512/10629/10629607.png" width="100px" height="100px"
+                class="min-w-[100px]" alt="Checklist free icon" title="Checklist free icon">
+            <h2 class="text-2xl font-bold mb-4 mt-4">Welcome to Mini Threads</h2>
+            <p class="text-center text-sm max-w-[300px]">
+                Your account has been successfully verified. You can now log in to your account.
+            </p>
+            <button
+                class="back_login-form__button mt-8 max-w-[370px] w-full h-[56px] bg-[#ffffff] rounded-[12px] text-[15px] font-semibold leading-[140%] text-[#101010] disabled:cursor-not-allowed disabled:text-[#10101066] relative">
+                <div class="back_login-form__button-text" onclick="window.location.href='/auth/login'">Back to log
+                    in</div>
+            </button>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

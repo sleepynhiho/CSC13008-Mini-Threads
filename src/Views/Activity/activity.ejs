@@ -1,0 +1,44 @@
+<div class="activity-wrapper w-full h-full relative">
+    <div
+        class="activity-actions-wrapper fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] items-end hidden tbl:hidden">
+        <div
+            class="activity-actions w-screen box-border p-4 pt-0 bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726]">
+            <div class="w-full py-3 flex justify-center">
+                <div class="w-10 h-1 bg-secondary-text rounded-full"></div>
+            </div>
+            <div class="activity-actions-opt w-full rounded-2xl bg-[#1e1e1e]">
+                <div
+                    class="activity-delete-action w-full box-border p-4 flex flex-nowrap justify-between items-center border-b-[1px] border-[#f3f5f726]">
+                    <span class="text-[15px] text-red-600 font-semibold text-left flex-grow">Delete</span>
+                    <svg aria-label="" role="img" viewBox="0 0 20 20" class="w-5 h-5">
+                        <title></title>
+                        <path
+                            d="M6.75 3.5V2.5C6.75 1.67157 7.42157 1 8.25 1H11.75C12.5784 1 13.25 1.67157 13.25 2.5V3.5"
+                            fill="none" stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                        <path
+                            d="M3.75 4L4.54449 15.5202C4.61689 16.57 4.6531 17.0949 4.88062 17.4928C5.08095 17.8431 5.38256 18.1246 5.74584 18.3004C6.15846 18.5 6.68461 18.5 7.73691 18.5H12.2631C13.3154 18.5 13.8415 18.5 14.2542 18.3004C14.6174 18.1246 14.9191 17.8431 15.1194 17.4928C15.3469 17.0949 15.3831 16.57 15.4555 15.5202L16.25 4M3.75 4H16.25M3.75 4H1.75M16.25 4H18.25"
+                            fill="none" stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                    </svg>
+                </div>
+                <div class="activity-mark-action w-full box-border p-4 flex flex-nowrap justify-between items-center">
+                    <span class="text-[15px] text-primary-text font-semibold text-left flex-grow">Mark as read</span>
+                    <svg aria-label="Views" role="img" viewBox="0 0 24 24" class="w-5 h-5">
+                        <title>Views</title>
+                        <path stroke="white" fill="white"
+                            d="M23.44141,11.81885C23.41309,11.74072,20.542,4,12,4S.58691,11.74072.55859,11.81885a1,1,0,0,0,1.88184.67724,10.28206,10.28206,0,0,1,19.11914-.00048.99992.99992,0,0,0,1.88184-.67676Zm-7.124,2.36853a3.35859,3.35859,0,0,1-1.541-.101,3.55981,3.55981,0,0,1-2.364-2.361,3.35086,3.35086,0,0,1-.103-1.542.99093.99093,0,0,0-1.134-1.107,5.42733,5.42733,0,0,0-3.733,2.339,5.50019,5.50019,0,0,0,8.44605,6.971,5.402,5.402,0,0,0,1.53595-3.091A.98311.98311,0,0,0,16.31738,14.18738Z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="activity-post-container w-full mt-[102px] tbl:mt-0">
+        <% if (notifications && notifications.length > 0) {%>
+            <% notifications.forEach(noti=> { %>
+                <%- include('activity-post', { noti, following }) %>
+            <% }) %>
+        <% } %>
+    </div>
+</div>
+
+<script src="/Js/activity.js"></script>

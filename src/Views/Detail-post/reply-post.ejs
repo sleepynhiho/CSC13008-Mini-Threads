@@ -1,0 +1,73 @@
+<div class="replies-post p-3 border-t-[1px] border-border-color tbl:px-6" id="comment-<%= comment._id.toString() %>">
+    <div class="replies-post-info flex flex-nowrap items-center relative">
+        <% if (userid && (comment.user_id._id.toString() === userid.toString() || post.user_id._id.toString() === userid.toString())) { %>
+            <div class="replies-post-more-btn w-5 h-5 absolute top-0 right-0 cursor-pointer">
+                <svg aria-label="More" role="img" viewBox="0 0 24 24" fill="#777">
+                    <title>More</title>
+                    <circle cx="12" cy="12" r="1.5"></circle>
+                    <circle cx="6" cy="12" r="1.5"></circle>
+                    <circle cx="18" cy="12" r="1.5"></circle>
+                </svg>
+                <div
+                    class="replies-post-more-list hidden select-none overflow-hidden fixed z-[4] top-0 bottom-0 right-0 left-0 bg-[#00000080] items-end text-primary-text text-[15px] font-semibold tbl:border-[1px] tbl:border-border-color tbl:rounded-t-2xl shadow-[0_10.5px_21px_rgba(0,_0,_0,_0.078)] tbl:absolute tbl:top-full tbl:z-[1] tbl:w-[224px] tbl:right-0 tbl:my-2 tbl:mr-[-19px] tbl:bg-content-bg tbl:left-auto tbl:bottom-auto tbl:rounded-b-2xl">
+                    <div
+                        class="w-screen box-border p-4 pt-0 bg-content-bg rounded-t-3xl border-[1px] border-[#f3f5f726] border-b-0 tbl:p-0 tbl:rounded-none tbl:border-0 tbl:w-full">
+                        <div class="w-full py-3 flex justify-center tbl:hidden">
+                            <div class="w-10 h-1 bg-secondary-text rounded-full"></div>
+                        </div>
+                        <div
+                            class="w-full rounded-2xl overflow-hidden bg-[#1e1e1e] mb-4 tbl:p-2 tbl:mb-0 tbl:rounded-none tbl:bg-transparent">
+                            <div
+                                comment-id="delete-comment-<%= comment._id.toString() %>"
+                                class="delete-comment min-h-[20px] box-content p-5 flex items-center justify-between tbl:rounded-xl cursor-pointer hover:bg-[#212121] text-red-600 tbl:p-3">
+                                <span>Delete</span>
+                                <svg aria-label="" role="img" viewBox="0 0 20 20" class="w-5 h-5">
+                                    <title></title>
+                                    <path d="M6.75 3.5V2.5C6.75 1.67157 7.42157 1 8.25 1H11.75C12.5784 1 13.25 1.67157 13.25 2.5V3.5" fill="none"
+                                        stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                                    <path
+                                        d="M3.75 4L4.54449 15.5202C4.61689 16.57 4.6531 17.0949 4.88062 17.4928C5.08095 17.8431 5.38256 18.1246 5.74584 18.3004C6.15846 18.5 6.68461 18.5 7.73691 18.5H12.2631C13.3154 18.5 13.8415 18.5 14.2542 18.3004C14.6174 18.1246 14.9191 17.8431 15.1194 17.4928C15.3469 17.0949 15.3831 16.57 15.4555 15.5202L16.25 4M3.75 4H16.25M3.75 4H1.75M16.25 4H18.25"
+                                        fill="none" stroke="red" stroke-linecap="round" stroke-width="1.5"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <img src="<%= comment.user_id.profile.avt %>" alt=""
+            class="replies-user-img w-9 h-9 rounded-full border-border-color border-[0.5px] object-cover self-start select-none" />
+        <div class="flex flex-col pl-3 w-[calc(100%-36px)]">
+            <div class="block">
+                <a href="/profile/<%= comment.user_id._id %>"
+                    class="replies-post-username inline-block text-[15px] font-user-weight hover:underline"><%= comment.user_id.profile.nick_name %></a>
+                <p data-created-at="<%= comment.createdAt %>" class="post-time-stamp inline-block text-[15px] text-secondary-text"></p>
+            </div>
+
+            <span
+                class="replies-post-content block text-[15px] font-normal text-primary-text break-words whitespace-normal mt-[3px]">
+                <%= comment.comment_content %>
+            </span>
+
+            <% if(comment.comment_image) { %>
+                <div >
+                    <img src="<%= comment.comment_image %>" alt="comment"
+                        class="reply-user-img max-w-full max-h-full mt-2 rounded-lg object-cover select-none" />
+                </div>
+            <% } %>
+            <div class="replies-post-action ml-[-12px] mt-[3px] select-none">
+                <button
+                    id="like-comment-<%= comment._id.toString() %>"
+                    class="like-comment h-9 inline-flex flex-nowrap items-center justify-center px-3 rounded-[20px] cursor-pointer tbl:hover:bg-[#222222]">
+                    <svg aria-label="Like" role="img" viewBox="0 0 18 18" class="w-[18px] h-[18px]">
+                        <title>Like</title>
+                        <path  <%= comment.comment_likes.includes(userid) ? 'fill=red stroke=red' : 'fill=none stroke=currentColor' %>
+                            d="M1.34375 7.53125L1.34375 7.54043C1.34374 8.04211 1.34372 8.76295 1.6611 9.65585C1.9795 10.5516 2.60026 11.5779 3.77681 12.7544C5.59273 14.5704 7.58105 16.0215 8.33387 16.5497C8.73525 16.8313 9.26573 16.8313 9.66705 16.5496C10.4197 16.0213 12.4074 14.5703 14.2232 12.7544C15.3997 11.5779 16.0205 10.5516 16.3389 9.65585C16.6563 8.76296 16.6563 8.04211 16.6562 7.54043V7.53125C16.6562 5.23466 15.0849 3.25 12.6562 3.25C11.5214 3.25 10.6433 3.78244 9.99228 4.45476C9.59009 4.87012 9.26356 5.3491 9 5.81533C8.73645 5.3491 8.40991 4.87012 8.00772 4.45476C7.35672 3.78244 6.47861 3.25 5.34375 3.25C2.9151 3.25 1.34375 5.23466 1.34375 7.53125Z"
+                            stroke-width="1.25"></path>
+                    </svg>
+                    <span class="like-comment-num text-[#<%= comment.comment_likes.includes(userid) ? 'ff0000' : 'ccc' %>] text-[13px] font-normal pl-1 <%= comment.comment_likes.length === 0 ? 'hidden' : '' %>"> <%= comment.comment_likes.length %></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+<div
+    class="edit-profile hidden fixed top-0 left-0 flex flex-col w-screen min-h-screen bg-content-bg z-[4] text-primary-text tbl:top-1/2 tbl:left-1/2 tbl:transform tbl:-translate-x-1/2 tbl:-translate-y-1/2 tbl:animate-zoomIn tbl:bg-transparent tbl:w-auto tbl:min-h-px">
+    <div
+        class="edit-info__header grid px-6 h-14 grid-cols-[64px_minmax(0,1fr)_64px] items-center tbl:border-b-[0.5px] tbl:border-[#f3f5f726] tbl:hidden">
+        <button
+            class="edit-info__cancel text-primary-text font-normal text-[16px] p-2 tbl:overflow-hidden">Cancel</button>
+        <div class="edit-info__header__title text-[16px] font-bold text-center">Edit Profile</div>
+        <button
+            class="edit-info__done text-primary-text font-normal text-[16px] p-2 tbl:overflow-hidden done-btn">Done</button>
+    </div>
+    <div class="flex justify-center items-center flex-grow">
+        <div
+            class="mx-5 bg-main-bg w-full text-white p-4 rounded-3xl border border-border-color pc:w-[580px] z-[10] tbl:min-w-[518px] tbl:mx-0 tbl:bg-black">
+            <form id="edit-profile-form" class="w-full">
+                <div class="flex flex-nowrap ml-6">
+                    <div
+                        class="edit-profile__field text-base flex flex-col justify-center flex-grow pb-3 border-b border-border-color">
+                        <label for="name" class="field__title font-bold mb-1">Name</label>
+                        <div class="field__content field__content__name font-normal">
+                            <input type="text" id="name" name="name" value="<%= user.profile.display_name %>"
+                                class="bg-transparent border-none outline-none w-full" />
+                        </div>
+                    </div>
+                    <div class="ml-3 mt-2 relative">
+                        <img src="<%= user.profile.avt %>" id="avatar-preview" alt="User Avatar"
+                            class="edit-profile__avatar box-content h-12 w-12 bg-cover rounded-full">
+                        <input type="file" accept="image/*" id="avatar-input" name="post_image"
+                            class="absolute top-0 left-[-4px] w-full h-full opacity-0 cursor-pointer" />
+                    </div>
+                </div>
+                <div
+                    class="edit-profile__field text-base flex flex-col justify-center ml-6 mr-6 mt-4 pb-3 border-b border-border-color">
+                    <label for="nickname" class="field__title font-bold mb-1">Nick Name</label>
+                    <div class="field__content field__content__name font-normal">
+                        <input type="text" id="nickname" name="nickname" value="<%= user.profile.nick_name %>"
+                            class="bg-transparent border-none outline-none w-full" />
+                    </div>
+                </div>
+                <div
+                    class="edit-profile__field text-base flex flex-col justify-center ml-6 mr-6 pb-3 border-b border-border-color">
+                    <label for="bio" class="field__title font-bold mt-4">Bio</label>
+                    <div class="field__content field__content__bio mt-2">
+                        <textarea id="bio" name="bio"
+                            class="bg-transparent border-none outline-none w-full"><%= user.profile.bio %></textarea>
+                    </div>
+                </div>
+                <div
+                    class="edit-profile__button tbl:flex h-12 mt-8 bg-white text-black text-base font-semibold hidden justify-center items-center cursor-pointer rounded-lg">
+                    <button type="button" class="w-full h-full flex justify-center items-center done-btn">Done</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const avatarInput = document.getElementById('avatar-input');
+        const avatarPreview = document.getElementById('avatar-preview');
+        const editProfileForm = document.getElementById('edit-profile-form');
+        const doneButtons = document.querySelectorAll('.done-btn');
+
+        // Preview avatar
+        avatarInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+                avatarPreview.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Handle form submission
+        doneButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default form submission
+                const loadingToast = document.querySelector('.loading-post-toast');
+                const toastContent = document.querySelector('.toast__loading-content');
+                const toastIcon = document.querySelector('.toast__loading-icon');
+                const nickname = document.getElementById('nickname').value.trim();
+                const name = document.getElementById('name').value.trim();
+                const bio = document.getElementById('bio').value.trim();
+
+                if (/\s/.test(nickname)) {
+                    toastContent.textContent = 'Nickname cannot contain spaces';
+                    toastIcon.classList.add('hidden');
+                    loadingToast.classList.remove('hidden');
+                    setInterval(() => {
+                        loadingToast.classList.add('hidden');
+                        toastIcon.classList.remove('hidden');
+                    }, 3000);
+                    return;
+                }
+
+                if (nickname.length > 30 || nickname.length === 0) {
+                    toastContent.textContent = 'Nickname must be between 1 and 30 characters';
+                    toastIcon.classList.add('hidden');
+                    loadingToast.classList.remove('hidden');
+                    setInterval(() => {
+                        loadingToast.classList.add('hidden');
+                        toastIcon.classList.remove('hidden');
+                    }, 3000);
+                    return;
+                }
+
+                if (name.length > 35 || name.length === 0) {
+                    toastContent.textContent = 'Name must be between 1 and 35 characters';
+                    toastIcon.classList.add('hidden');
+                    loadingToast.classList.remove('hidden');
+                    setInterval(() => {
+                        loadingToast.classList.add('hidden');
+                        toastIcon.classList.remove('hidden');
+                    }, 3000);
+                    return;
+                }
+
+                if (bio.length > 150) {
+                    toastContent.textContent = 'Bio must be less than 150 characters';
+                    toastIcon.classList.add('hidden');
+                    loadingToast.classList.remove('hidden');
+                    setInterval(() => {
+                        loadingToast.classList.add('hidden');
+                        toastIcon.classList.remove('hidden');
+                    }, 3000);
+                    return;
+                }
+
+                const formData = new FormData(editProfileForm);
+                loadingToast.classList.remove('hidden');
+                toastContent.textContent = 'Updating profile...';
+
+                // Example: Send data to the server via fetch API
+                fetch('/profile/edit', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            loadingToast.classList.add('hidden');
+                            location.reload(); // Reload page if needed
+                        } else {
+                            return response.json(); // Parse JSON response to get the error message
+                        }
+                    })
+                    .then(data => {
+                        // Check if the server returned an error message (e.g., nickname already exists)
+                        if (data && data.message) {
+                            toastContent.textContent = data.message; // Display the error message in toast
+                            toastIcon.classList.add('hidden');
+                            loadingToast.classList.remove('hidden');
+                            setInterval(() => {
+                                loadingToast.classList.add('hidden');
+                                toastIcon.classList.remove('hidden');
+                            }, 3000);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    });
+</script>

@@ -1,0 +1,26 @@
+<!-- Đang khá là không ổn định để dùng khi hover nếu container không đủ lớn sẽ bị expand -->
+<div class="post-username relative group">
+    <span class="hover:underline text-[15px] font-user-weight" onclick="window.location.href='<%= user.user_profile_link %>'"><%= user.user_display_name %></span>
+    <div
+        class="user-card absolute left-0 top-full mt-2 w-80 p-4 bg-[#181818] border border-border-color rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50"
+    >
+        <div class="hover-top flex items-center justify-between mt-4">
+            <div class="info-container">
+                <div class="first-info font-semibold"><%= user.user_display_name %></div>
+                <div class="secondary-info"><%= user.user_nick_name %></div>
+                <div class="bio mt-2"><%= user.user_bio %></div>
+            </div>
+            <img
+                src="<%= user.avatarSrc %>"
+                class="w-16 h-16 rounded-full ml-3"
+                alt="User Icon"
+            />
+        </div>
+        <div class="hover-bottom mt-1">
+            <div class="hover-followers text-[#777777]"><%= user.user_followers_count %> followers</div>
+            <button class="follow-btn mt-4 px-[120px] py-1 bg-white text-black font-semibold rounded-md">
+                Follow
+            </button>
+        </div>
+    </div>
+</div>

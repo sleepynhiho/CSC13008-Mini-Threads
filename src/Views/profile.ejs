@@ -1,0 +1,237 @@
+<div class="profile-wrapper w-full h-full relative">
+    <!-- code trong đây  -->
+    <!-- edit profile -->
+    <%- include('profile/edit_form_module', { user: user, }) %>
+        <!-- follower -->
+        <div
+            class="follower-popup bg-[#121212] text-white tbl:rounded-3xl hidden fixed inset-0 m-auto pc:w-[520px] z-[10] tbl:w-[500px] tbl:fixed tbl:bottom-auto tbl:border tbl:border-[rgba(147,140,140,0.4)] tbl:top-1/2 tbl:left-1/2 tbl:right-1/2 tbl:transform tbl:-translate-x-1/2 tbl:-translate-y-1/2">
+            <!-- đóng -->
+            <div class="follower-popup__header flex justify-end items-center tbl:hidden">
+                <div class="follower-popup__header__close-btn cursor-pointer">
+                    <svg aria-label="Close" role="img" viewBox="0 0 24 24" class="w-7 h-7 pr-5 pt-3 box-content" stroke="#f3f5f7"
+                        fill="transparent" stroke-width="1.5">
+                        <title>Close</title>
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6L18 18"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- header  -->
+            <ul
+                class="navigation-follower pt-2 flex flex-row justify-around font-medium text-[15px] list-style: none border-b border-solid border-b-[rgba(243,245,247,0.15)]">
+                <li
+                    class="navigation-follower__item cursor-pointer w-[calc(100%_/_3)] flex items-center flex-col hover:cursor-pointer; navigation__news navigation__item--on text-[white]"
+                    id="tab-followers"
+                    >
+                    <div class="item-follower__text">Followers</div>
+                    <div class="item-follower__number text-sm">
+                        <%= user.followers.length %>
+                    </div>
+                    <div
+                        class="item-follower__line w-full mt-4 border-b-[rgba(243,245,247,0.15)] border-b border-solid border-b-[white]">
+                    </div>
+                </li>
+                <li
+                    class="navigation-follower__item cursor-pointer w-[calc(100%_/_3)] flex items-center flex-col hover:cursor-pointer; navigation__replies navigation__item--off text-[rgb(153,153,153)]"
+                    id="tab-following"
+                    >
+                    <div class="item-follower__text">Following</div>
+                    <div class="item-following__number text-sm"><%= user.following.length %></div>
+                    <div
+                        class="item-follower__line w-full mt-4 border-b-[rgba(243,245,247,0.15)] border-b border-solid">
+                    </div>
+                </li>
+            </ul>
+            <!-- list follower -->
+
+            <div id="followers-list" class="list-follower w-full h-full tbl:bg-[#181818] border-b border-gray-700 rounded-b-3xl">
+                <% if (followerUsers.length > 0) { %>
+                    <% followerUsers.forEach(followUser=> { %>
+                        <%- include('profile/user_follow_module', { user: followUser, curUserId: curUserId }) %>
+                    <% }) %>
+                <% } else { %>
+                    <div class="p-4 text-center text-[#777777] ">
+                        <p>There are currently no followers.</p>
+                    </div>
+                <% } %>
+            </div>
+
+            <div id="following-list" class="list-follower w-full h-full tbl:bg-[#181818] border-b border-gray-700 rounded-b-3xl hidden">
+                <% if (followingUsers.length > 0) { %>
+                    <% followingUsers.forEach(followingUser=> { %>
+                        <%- include('profile/user_follow_module', { user: followingUser, curUserId: curUserId }) %>
+                    <% }) %>
+                <% } else { %>
+                    <div class="p-4 text-center text-[#777777] ">
+                        <p><%= user.profile.display_name %> currently not following anyone.</p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="profile-wrapper relative w-full h-full">
+            <!-- profile -->
+
+
+            <div class="profile__info mt-8 border-b border-border-color pb-4">
+                <div class="profile__info__header flex flex-col px-6">
+                    <div class="content__heading flex justify-between">
+                        <div class="information flex-grow flex flex-col font-bold">
+                            <div class="information__name text-2xl mb-1">
+                                <%=user.profile.display_name%>
+                            </div>
+                            <div class="information__nickname text-sm font-normal">
+                                <%=user.profile.nick_name%>
+                            </div>
+                        </div>
+                        <div class="utility flex flex-col items-end">
+                            <img src="<%= user.profile.avt %>" alt="User Avatar"
+                                class="utility__avatar w-[84px] h-[84px] bg-cover rounded-full cursor-pointer">
+                        </div>
+                    </div>
+                    <div class="flex flex-col mt-3">
+                        <div class="information__bio text-sm font-normal mb-4 break-all">
+                            <%=user.profile.bio%>
+                        </div>
+                        <div class="information__follower flex flex-row gap-1 mb-8 text-gray-500">
+                            <ul class="follower__img flex flex-row cursor-pointer">
+                                <!-- không tạo loop vì truyền biến theo loop vô style khá khó không tối ưu nếu để nó lồng if vô thì sẽ tối ưu hơn một xíu nhưng không đáng kể kiểu này dễ đọc code hơn -->
+                                <% if (followerUsers[0]?.profile?.avt) { %>
+                                    <li class="follower__img__item h-4 w-4 bg-cover mr-1 relative rounded-full"
+                                        style="background-image: url('<%= followerUsers[0].profile.avt %>'); left: 2px;"></li>
+                                <% } %>
+                                <% if (followerUsers[1]?.profile?.avt) { %>
+                                    <li class="follower__img__item h-4 w-4 bg-cover mr-1 relative rounded-full"
+                                        style="background-image: url('<%= followerUsers[1].profile.avt %>'); left: -10px;"></li>
+                                    <% } %>
+                                <% if (followerUsers[2]?.profile?.avt) { %>
+                                    <li class="follower__img__item h-4 w-4 bg-cover mr-1 relative rounded-full"
+                                        style="background-image: url('<%= followerUsers[2].profile.avt %>'); left: -20px;"></li>
+                                <% } %>
+                            </ul>
+                            <div class="follower__number text-sm font-normal mr-1 relative cursor-pointer">
+                                <%=user.followers.length%>
+                            </div>
+                            <div class="follower__text text-sm font-normal relative cursor-pointer">followers</div>
+                        </div>
+                    </div>
+                </div>
+                <% if (type === "guest") { %>
+                    <div
+                        class="follow-btn1 block h-8 text-sm ml-6 mr-6 text-center cursor-pointer border rounded-lg"
+                        style="border: 2px solid rgba(147, 140, 140, 0.4)"
+                        data-user-id="<%= user._id %>"
+                        onClick="handleFollowClick('<%= user._id %>', event)"
+                    >
+                        <p class="mt-1"><%= isFollowing ? "Following" : "Follow" %></p>
+                    </div>
+                  <% } else if (type === "owner") { %>
+                    <div
+                      class="edit-btn block h-8 text-sm ml-6 mr-6 text-center cursor-pointer border rounded-lg"
+                      style="border: 2px solid rgba(147, 140, 140, 0.4)"
+                    >
+                      <p class="mt-1">Edit profile</p>
+                    </div>
+                  <% } %>
+            </div>
+            <% if (header === "Personal profile") { %>
+                <div class="start-thread top-0 flex justify-center gap-2 w-full items-stretch border-b border-border-color py-4 px-6">
+                    <div class="icon-container flex cursor-pointer">
+                        <img src="<%= avatarSrc %>" class="w-9 h-9 rounded-full mt-1" alt="" />
+                    </div>
+                    <div class="start-thread w-11/12 flex flex-col gap-1">
+                        <div class="start-thread-username text-[15px] font-user-weight tbl:hidden">
+                            <%= username %>
+                        </div>
+                        <div class="start-thread-title tbl:mt-2 flex justify-between">
+                            <div class="start-thread-text text-[#777777]">What's new?</div>
+                            <button
+                                class="hidden tbl:block bg-[#181818] border border-border-color px-4 py-[6px] text-[15px] rounded-[10px] font-semibold">
+                                Post
+                            </button>
+                        </div>
+                        <div class="start-thread-icons mt-4 flex justify-between tbl:hidden">
+                            <svg aria-label="Đính kèm file phương tiện" role="img" viewBox="0 0 24 24"
+                                class="x1lliihq x135i0dr x2lah0s x1f5funs x1n2onr6 x1bl4301 x1gaogpn w-5 h-5 cursor-pointer text-[#777777]"
+                                style="--fill: currentColor; --height: 20px; --width: 20px">
+                                <title>Đính kèm file phương tiện</title>
+                                <g>
+                                    <path clip-rule="evenodd"
+                                        d="M2.00207 9.4959C1.65132 7.00019 1.47595 5.75234 1.82768 4.73084C2.13707 3.83231 2.72297 3.05479 3.50142 2.50971C4.38639 1.89005 5.63425 1.71467 8.12996 1.36392L10.7047 1.00207C13.2004 0.651325 14.4482 0.47595 15.4697 0.827679C16.3682 1.13707 17.1458 1.72297 17.6908 2.50142C17.9171 2.82454 18.0841 3.19605 18.2221 3.65901C17.7476 3.64611 17.2197 3.64192 16.6269 3.64055C16.5775 3.5411 16.5231 3.44881 16.4621 3.36178C16.0987 2.84282 15.5804 2.45222 14.9814 2.24596C14.3004 2.01147 13.4685 2.12839 11.8047 2.36222L7.44748 2.97458C5.78367 3.20841 4.95177 3.32533 4.36178 3.73844C3.84282 4.10182 3.45222 4.62017 3.24596 5.21919C3.01147 5.90019 3.12839 6.73209 3.36222 8.3959L3.97458 12.7531C4.15588 14.0431 4.26689 14.833 4.50015 15.3978C4.50083 16.3151 4.50509 17.0849 4.53201 17.7448C4.13891 17.4561 3.79293 17.1036 3.50971 16.6991C2.89005 15.8142 2.71467 14.5663 2.36392 12.0706L2.00207 9.4959Z"
+                                        fill="currentColor" fill-rule="evenodd"></path>
+                                    <g>
+                                        <g clip-path="url(#:r5v:)">
+                                            <rect fill="none" height="15.5" rx="3.75" stroke="currentColor" stroke-width="1.5"
+                                                width="15.5" x="6.75" y="5.8894"></rect>
+                                            <path
+                                                d="M6.6546 17.8894L8.59043 15.9536C9.1583 15.3857 10.0727 15.3658 10.6647 15.9085L12.5062 17.5966C12.9009 17.9584 13.5105 17.9451 13.8891 17.5665L17.8181 13.6376C18.4038 13.0518 19.3536 13.0518 19.9394 13.6375L22.0663 15.7644"
+                                                fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"></path>
+                                            <circle cx="10.75" cy="9.8894" fill="currentColor" r="1.25"></circle>
+                                        </g>
+                                    </g>
+                                </g>
+                                <defs>
+                                    <clipPath id=":r5v:">
+                                        <rect fill="white" height="17" rx="4.5" width="17" x="6" y="5.1394"></rect>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <!-- post : lấy module từ trang home thay vào-->
+            <div class="my-posts">
+                <% if (posts.length > 0) { %>
+                    <% posts.forEach(post => { %>
+                        <%- include('home/home-post', { post: post }) %>
+                    <% }) %>
+                <% } %>
+            </div>
+            
+
+
+        </div>
+</div>
+<script src="/Js/profile.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabFollowers = document.getElementById('tab-followers');
+        const tabFollowing = document.getElementById('tab-following');
+        const followersList = document.getElementById('followers-list');
+        const followingList = document.getElementById('following-list');
+
+        // Sự kiện click cho tab "Followers"
+        tabFollowers.addEventListener("click", function() {
+            setFollowList('followers');
+        });
+
+        // Sự kiện click cho tab "Following"
+        tabFollowing.addEventListener("click", function() {
+            setFollowList('following');
+        });
+
+        function setFollowList(followType) {
+            if (followType === 'followers') {
+                followersList.classList.remove('hidden');
+                followingList.classList.add('hidden');
+                tabFollowers.classList.add('text-[white]');
+                tabFollowers.classList.remove('text-[rgb(153,153,153)]');
+                tabFollowing.classList.add('text-[rgb(153,153,153)]');
+                tabFollowing.classList.remove('text-[white]');
+                tabFollowing.querySelector('.item-follower__line').classList.remove('border-b-[white]');
+                tabFollowers.querySelector('.item-follower__line').classList.add('border-b-[white]');
+            } else if (followType === 'following') {
+                followersList.classList.add('hidden');
+                followingList.classList.remove('hidden');
+                tabFollowers.classList.add('text-[rgb(153,153,153)]');
+                tabFollowers.classList.remove('text-[white]');
+                tabFollowing.classList.add('text-[white]');
+                tabFollowing.classList.remove('text-[rgb(153,153,153)]');
+                tabFollowing.querySelector('.item-follower__line').classList.add('border-b-[white]');
+                tabFollowers.querySelector('.item-follower__line').classList.remove('border-b-[white]');
+                tabFollowers.querySelector('.item-follower__line').classList.add('border-b-[rgba(243,245,247,0.15)]');
+            }
+        }
+    });
+</script>
