@@ -105,7 +105,7 @@ const getOtherUserProfile = async (req, res) => {
         const unreadCount = req.user ? await Notification.countDocuments({ user_id: req.userId, is_read: false }) : 0;
         const title = `${unreadCount > 0 ? `(${unreadCount}) ` : ''}${user.profile.display_name}`;
 
-        res.render('Profile', {
+        res.render('profile', {
             title: title,
             header: user.profile.nick_name,
             refreshItems: [],
@@ -196,7 +196,7 @@ const profileController = async (req, res) => {
         });
         const title = `${unreadCount > 0 ? `(${unreadCount}) ` : ''}${user.profile.display_name}`;
 
-        res.render('Profile', {
+        res.render('profile', {
             title: title,
             header: 'Personal profile',
             refreshItems: [],
